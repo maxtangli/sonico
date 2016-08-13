@@ -1,3 +1,6 @@
+/*
+A search for interesting implementations of Fizz-Buzz.
+*/
 #include <stdio.h>
 
 // https://github.com/Keith-S-Thompson/fizzbuzz-c/blob/master/fizzbuzz07.c
@@ -79,15 +82,15 @@ main(i){for(;i<101;puts("Buzz"-i*i++%5))printf(i%3?i%5?"%d":0:"Fizz",i);}
 
 // my version. criterion: easy understanding > simple > short > performance.
 void fizzbuzz(int n) {
-	for (int i=1; i<=n; ++i) {
-		if (i%3&&i%5) printf("%d",i);
-		if (i%3==0) printf("Fizz");
-		if (i%5==0) printf("Buzz");
-		printf(",");
-	}
+    for (int i=1; i<=n; ++i) {
+        if (i%3&&i%5) printf("%d",i);
+        if (i%3==0) printf("Fizz");
+        if (i%5==0) printf("Buzz");
+        printf(",");
+    }
 }
 
 // expected output: 1,2,Fizz,4,Buzz,Fizz,7,8,Fizz,Buzz,11,Fizz,13,14,FizzBuzz
 int main() {
-	fizzbuzz(15);
+    fizzbuzz(15);
 }
