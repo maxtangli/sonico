@@ -75,10 +75,8 @@ void assertArray(int* expected, int* result, int n) {
     }
 }
 
-int compare_ints(const void* a, const void* b)
-{
-    int arg1 = *(const int*)a, arg2 = *(const int*)b;
-    return (arg1 > arg2) - (arg1 < arg2);
+int compare_ints(const void* a, const void* b) {
+    return (*(int*)a - *(int*)b);
 }
 
 void testMergesort(int* origin, int n) {    
