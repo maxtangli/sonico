@@ -1,5 +1,5 @@
 /*
-A practice for divide and conquer.
+A practice for divide and conquer by implementing merge-sort.
 */
 # include <stdio.h>
 # include <stdlib.h>
@@ -45,9 +45,7 @@ void merge(int* a, int na, int* b, int nb, int* result) {
 }
 
 void mergesort(int* a, int n) {
-    if (n <= 1) {
-        return;
-    }
+    if (n <= 1) return;
     
     int na = n / 2;
     int* b = a + na;
@@ -55,10 +53,9 @@ void mergesort(int* a, int n) {
     mergesort(a, na);
     mergesort(b, nb);
     
-    int* result = malloc(n * sizeof(int));
+    int result[n];
     merge(a, na, b, nb, result);
     memcpy(a, result, n * sizeof(int));
-    free(result);
 }
 
 void debugArray(int* a, int n) {
@@ -85,15 +82,12 @@ int compare_ints(const void* a, const void* b)
 }
 
 void testMergesort(int* origin, int n) {    
-    int* expected = malloc(n * sizeof(int));
+    int expected[n];
     memcpy(expected, origin, n * sizeof(int));
     qsort(expected, n, sizeof(int), compare_ints);
     
     mergesort(origin, n);
-    int* result = origin;
-    assertArray(expected, result, n);
-    
-    free(expected);
+    assertArray(expected, origin, n);
 }
 
 void testsMergeSort() {
@@ -112,10 +106,9 @@ void testsMergeSort() {
 }
 
 void testMerge(int* expected, int* a, int na, int* b, int nb) {
-    int* result = malloc((na + nb) * sizeof(int));
+    int result[na + nb];
     merge(a, na, b, nb, result);
     assertArray(expected, result, na + nb);
-    free(result);
 }
 
 void testsMerge() {
