@@ -7,6 +7,7 @@ A practice for C language and simple algorithms.
 - [x] TDD in C
 - [x] C99, C11
 - [x] gcc to complie and link .o library
+- [x] beautiful C coding style
 
 ## simple algorithms
 
@@ -15,18 +16,18 @@ primer
 
 divide and conquer
 - [x] merge sort
+- [ ] merge sort's iterate version
 
 - [x] nth-minimum
-- [ ] quick sort
+- [x] quick sort
 - [ ] nth-minimum's no extra memory version
 
 - [ ] binary search
-
-- [ ] merge sort's iterate version
 
 greedy
 
 dynamic programming
 
-tree
+etc
+- [ ] permutation
 - [ ] B-tree

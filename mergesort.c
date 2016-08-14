@@ -49,8 +49,7 @@ void mergesort(int* a, int n) {
     if (n <= 1) return;
     
     int na = n / 2;
-    int* b = a + na;
-    int nb = n - na;
+    int* b = a + na, nb = n - na;
     mergesort(a, na);
     mergesort(b, nb);
     
