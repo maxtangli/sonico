@@ -16,7 +16,6 @@ split a into 3 groups by pivot: l[1...ln], m[1...mn], r[1...rn].
 if nth <= ln, return min(l[1...ln], nth);
 else if nth <= ln + mn, return pivot;
 else return min(r[1...rn], nth - ln - mn);
-
 */
 
 int min(int* a, int n, int nth) {
@@ -38,7 +37,7 @@ int min(int* a, int n, int nth) {
 }
 
 int compare_ints(const void* a, const void* b) {
-    return (*(int*)a - *(int*)b);
+    return *(int*)a - *(int*)b;
 }
 
 void test(int* a, int n) {
@@ -56,7 +55,6 @@ void test(int* a, int n) {
             puts("].");
         }
     }
-    
 }
 
 void tests() {
