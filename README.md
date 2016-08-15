@@ -1,13 +1,14 @@
 # C-practice
 A practice for C language and simple algorithms.
 
-## c language
+## C language
 
 - [x] gcc environment in windows
 - [x] TDD in C
 - [x] C99, C11
 - [x] gcc to complie and link .o library
-- [x] beautiful C coding style
+- [x] C coding style
+- [ ] familiar with string, file, struct
 
 ## simple algorithms
 
@@ -24,9 +25,15 @@ divide and conquer
 
 - [ ] binary search
 
+tree, graph
+
 greedy
 
 dynamic programming
+
+- [ ] knapsack
+
+linear programming
 
 etc
 - [ ] permutation

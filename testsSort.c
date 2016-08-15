@@ -13,8 +13,10 @@ void assertArray(int* expected, int* result, int* origin, int n) {
         printArray(expected, n);
         printf("] but result[");
         printArray(result, n);
-        printf("] in origin[");
-        printArray(origin, n);
+        if (origin != NULL) {
+            printf("] in origin[");
+            printArray(origin, n);
+        }
         puts("].");
     }
 }
