@@ -43,8 +43,18 @@ for k,v in tel.items(): print(k,v)
 
 """
 day 1: 80min
-thoughs
+thoughts
 - powerful data structures, lambda, list comprehensions
 - brief coding style, though ruby is better 
 - php is too old, c++ ?...
 """
+# module
+def hello():
+    print("hello")
+
+# generators, iterators
+def reverse(data):
+    for index in range(len(data)-1, -1, -1):
+        yield data[index]
+
+for char in reverse('golf'):print(char)
