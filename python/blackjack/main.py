@@ -9,21 +9,36 @@ class Card:
         self.rank = rank
         self.suit = suit
 
-    def is_number(self):
-        return not self.is_ace()
+    def __str__(self):
+        return "%s %s" % (self.suit, self.rank)
 
-    def is_ace(self):
+    def __repr__(self):
+        return self.__str__()
+
+    def is_number(self):
+        return self.rank not in list('JQKA')
+
+    def is_face(self):
         return self.rank in list('JQK')
 
+    def is_ace(self):
+        return self.rank == 'A'
+
     def get_point(self):
-        return self.rank if self.is_number() else 11
+        if self.is_number():
+            return self.rank
+        elif self.is_face():
+            return 10
+        else:
+            return 11
 
     def get_min_point(self):
-        return self.rank if self.is_number() else 1
+        return 1 if self.is_ace() else self.get_point()
 
 
 class Hand(list):
     def get_points(self):
+        print(self[0].get_point(), self[1].get_point(), len(self))
         max_points = sum(map(Card.get_point, self))
         min_points = sum(map(Card.get_min_point, self))
         points = max_points
@@ -38,22 +53,31 @@ class Hand(list):
         return self.get_points() > 21
 
     def allow_draw(self):
-        return not self.is_bust() and len(self) <= 5
+        return not self.is_bust() and len(self) < 5
 
 
 class TestBlackjack(unittest.TestCase):
     def test_card(self):
         self.assertEqual(2, Card(2).get_point())
-        self.assertEqual(11, Card('J').get_point())
+        self.assertEqual(10, Card('J').get_point())
+        self.assertEqual(11, Card('A').get_point())
+        self.assertTrue(Card(2).is_number())
+        self.assertFalse(Card('J').is_number())
+        self.assertFalse(Card('A').is_number())
 
     def test_hand(self):
         self.assertEqual(2, Hand([Card(2)]).get_points())
-        self.assertEqual(11, Hand([Card('J')]).get_points())
-        self.assertEqual(13, Hand([Card(2), Card('J')]).get_points())
-        self.assertEqual(14, Hand([Card(2), Card('J'), Card('J')]).get_points())
-        self.assertEqual(15, Hand([Card(2), Card('J'), Card('J'), Card('J')]).get_points())
-        self.assertEqual(15, Hand([Card(2), Card('J'), Card('J'), Card('J'), Card(10)]).get_points())
-        self.assertEqual(24, Hand([Card(2), Card('J'), Card('J'), Card(10), Card(10)]).get_points())
+        self.assertEqual(10, Hand([Card('J')]).get_points())
+        self.assertEqual(11, Hand([Card('A')]).get_points())
+        self.assertEqual(13, Hand([Card(2), Card('A')]).get_points())
+        self.assertEqual(14, Hand([Card(2), Card('A'), Card('A')]).get_points())
+        self.assertEqual(15, Hand([Card(2), Card('A'), Card('A'), Card('A')]).get_points())
+        self.assertEqual(23, Hand([Card(2), Card('J'), Card('J'), Card('A')]).get_points())
+        self.assertEqual(15, Hand([Card(2), Card('A'), Card('A'), Card('A'), Card(10)]).get_points())
+        self.assertEqual(24, Hand([Card(2), Card('A'), Card('A'), Card(10), Card(10)]).get_points())
+        self.assertTrue(Hand([Card(2), Card('A'), Card('A'), Card('A')]).allow_draw())
+        self.assertFalse(Hand([Card(2), Card('J'), Card('J'), Card('A')]).allow_draw())
+        self.assertFalse(Hand([Card(2), Card('A'), Card('A'), Card('A'), Card(10)]).allow_draw())
 
 
 if __name__ == '__main__':
@@ -64,16 +88,15 @@ if __name__ == '__main__':
 #     ranks = [str(n) for n in range(2, 11)] + list('JQKA')
 #     suits = 'spades diamonds clubs hearts'.split()
 #     deck = [Card(rank, suit) for suit in suits for rank in ranks]
-#
-#     hand = []
-#
 #     random.shuffle(deck)
+#
+#     hand = Hand()
+#
 #     hand.append(deck.pop())
 #     hand.append(deck.pop())
 #
 #     print(hand)
-#     handAllowDraw = True # todo
-#     while handAllowDraw and len(deck) > 0 and input('draw (y/n)?') == 'y':
+#     while hand.allow_draw() and len(deck) > 0 and input('draw (y/n)?') == 'y':
 #         hand.append(deck.pop())
 #         print(hand)
 #
@@ -93,5 +116,6 @@ todo:
     - [x] Hand.get_points() 1h
     - [x] impl handAllowDraw 0.1h
     
+    - [x] fix point rule 0.5h
     - [ ] adapt main
 """
