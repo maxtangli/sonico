@@ -71,13 +71,13 @@ list(range(0, 30, 5))
 
 # text sequence: str: immutable
 
-''.join(range(5))
+''.join('{}'.format(i) for i in range(5))
 
 # binary sequence: bytes: immutable
 
-b'still allows embedded "double" quotes' # ascii characters only
-bytes(10) # zero filled
-bytes(range(20)) # by iterable
+b'still allows embedded "double" quotes'  # ascii characters only
+bytes(10)  # zero filled
+bytes(range(20))  # by iterable
 
 # binary sequence: bytearray: mutable version of bytes
 
@@ -87,8 +87,25 @@ v = memoryview(b'abcefg')
 v[1]
 bytes(v[1:4])
 
-# set, frozenset todo
+# set: mutable, unordered frozenset: immutable, unordered
 
-# dict todo
+{'jack', 'sjoerd'}
+{s for s in ['jack', 'sjoerd']}
+set(['jack', 'sjoerd'])
+frozenset(['jack', 'sjoerd'])
+
+# dict: mutable, unordered
+
+m = {'one': 1, 'two': 2, 'three': 3}  # any hashable objects can be keys
+m = dict(one=1, two=2, three=3)
+m = dict([('two', 2), ('one', 1), ('three', 3)])
+m = {k: v for k, v in [('two', 2), ('one', 1), ('three', 3)]}
+m.keys(), m.values(), m.items()  # view objects
+
+m.get('key', list())
+m.setdefault('key', list()).append('value')
+m = collections.defaultdict(list)
+
+ct = collections.Counter('abracadabra')
 
 # object() todo
