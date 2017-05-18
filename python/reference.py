@@ -108,4 +108,31 @@ m = collections.defaultdict(list)
 
 ct = collections.Counter('abracadabra')
 
-# object() todo
+# object https://docs.python.org/3.6/reference/datamodel.html#special-method-names
+"""
+new # e.g. override to support immutable 
+init
+(del)
+repr # return a valid Python expression to recreate the object if possible
+str: call repr
+(bytes)
+lt, le, ne, gt, ge: NotImplemented
+eq: false if not self
+hash: e.g. address. if override eq, return None.
+bool: return len > 0 if defined len, otherwise return True.
+
+getattr: called when an attribute lookup failed
+getattribute: called unconditionally
+setattr
+delattr # should only be implemented if del obj.name is meaningful for the object
+dir: called when dir(obj) is called
+
+get, set, delete, set_name # for descriptor class, e.g dict
+
+(slots): override to save space, since by default, instances of classes have a dictionary for attribute storage.
+
+call
+
+len, length_hint, getitem, missing, setitem, delitem, iter, reversed, contains
+
+"""
