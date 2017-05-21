@@ -136,3 +136,12 @@ call
 len, length_hint, getitem, missing, setitem, delitem, iter, reversed, contains
 
 """
+# function
+"""
+decorators
+- e.g. property, classmethod, staticmethod, functools.wraps, functools.lru_cache()
+- run in import time.
+- closures.
+- stacked decorators.
+- paramterized decorators.
+"""
