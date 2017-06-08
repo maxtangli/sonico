@@ -7,8 +7,11 @@ def decode_morse_single(s):
         "iiI", "iiiI", "iII", "IiiI", "IiII", "IIii",
         "iIIII", "iiIII", "iiiII", "iiiiI", "iiiii", "Iiiii", "IIiii", "IIIii", "IIIIi", "IIIII"
     ]
-    pos = values.index(s)
-    return keys[pos]
+    try:
+        pos = values.index(s)
+        return keys[pos]
+    except ValueError:
+        return "?"
 
 
 def decode_morse(s):
