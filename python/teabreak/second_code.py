@@ -1,72 +1,48 @@
-class SimpleBars(list):
-    def write(self, pos, ch):
-        n = len(self)
-        i = (pos + n) % n
-        # [ ] + i -> i, [ ] + T -> T, i + i -> [ ], else error
-        if self[i] == " " and ch == "i":
-            self[i] = "i"
-        elif self[i] == " " and ch == "T":
-            self[i] = "T"
-        elif self[i] == "i" and ch == "i":
-            self[i] = " "
-        else:
-            raise Exception()
-
-    def next(self):
-        # i -> iTi, T -> i, i + i -> []
-        result = SimpleBars(" " * len(self))
-        for i in range(len(self)):
-            if self[i] == "i":
-                result.write(i - 1, "i")
-                result.write(i, "T")
-                result.write(i + 1, "i")
-            elif self[i] == "T":
-                result.write(i, "i")
-            else:
-                pass
-
-        for i in range(len(result)):
-            self[i] = result[i]
-
-        return self
+class BaseBars(list):
+    def __init__(self, iterable, rules_trans, rules_write):
+        super().__init__(iterable)
+        self._rules_trans = rules_trans
+        self._rules_write = rules_write
 
     def __str__(self):
-        return "".join(self)
-
-
-class Bars(SimpleBars):
-    def write(self, pos, ch):
-        n = len(self)
-        i = (pos + n) % n
-        # [ ] + i -> i, [ ] + T -> T, i + i -> [ ], else error
-        maps = [" ii", " TT", " II", "ii ", "TiI", "iTI", "IiT", "iIT"]
-        for s in maps:
-            if self[i] == s[0] and ch == s[1]:
-                self[i] = s[2]
-                return
-        raise Exception()
+        return ''.join(self)
 
     def next(self):
-        # i -> iTi, T -> i, i + i -> []
-        result = Bars(" " * len(self))
+        rules = self._rules_trans
+
+        result = Bars(' ' * len(self))
         for i in range(len(self)):
-            if self[i] == "i":
-                result.write(i - 1, "i")
-                result.write(i, "T")
-                result.write(i + 1, "i")
-            elif self[i] == "I":
-                result.write(i - 1, "i")
-                result.write(i, "I")
-                result.write(i + 1, "i")
-            elif self[i] == "T":
-                result.write(i, "i")
-            else:
-                pass
+            if self[i] == ' ':
+                continue
+            offset, s = next([offset, s] for old, offset, s in rules if old == self[i])
+            result.write(i + offset, s)
 
-        for i in range(len(result)):
-            self[i] = result[i]
-
+        self.clear()
+        self.extend(result)
         return self
 
-    def __str__(self):
-        return "".join(self)
+    def write(self, pos, s):
+        for i, ch in enumerate(s):
+            self.write_ch(pos + i, ch)
+
+    def write_ch(self, pos, ch):
+        n = len(self)
+        i = (pos + n) % n
+
+        rules = self._rules_write
+        result = next(result for origin, plus, result in rules if origin == self[i] and plus == ch)
+        self[i] = result
+
+
+class SimpleBars(BaseBars):
+    def __init__(self, iterable):
+        rules_trans = [['i', -1, 'iTi'], ['T', 0, 'i']]
+        rules_write = [' ii', ' TT', 'ii ']
+        super().__init__(iterable, rules_trans, rules_write)
+
+
+class Bars(BaseBars):
+    def __init__(self, iterable):
+        rules_trans = [['i', -1, 'iTi'], ['I', -1, 'iIi'], ['T', 0, 'i']]
+        rules_write = [' ii', ' TT', ' II', 'ii ', 'TiI', 'iTI', 'IiT', 'iIT']
+        super().__init__(iterable, rules_trans, rules_write)

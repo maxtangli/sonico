@@ -71,7 +71,7 @@ list(range(0, 30, 5))
 
 # text sequence: str: immutable
 
-''.join('{}'.format(i) for i in range(5))
+''.join('{}'.format(i) for i in range(5))  # '' and "" is identical
 
 # binary sequence: bytes: immutable
 
@@ -100,6 +100,7 @@ m = {'one': 1, 'two': 2, 'three': 3}  # any hashable objects can be keys
 m = dict(one=1, two=2, three=3)
 m = dict([('two', 2), ('one', 1), ('three', 3)])
 m = {k: v for k, v in [('two', 2), ('one', 1), ('three', 3)]}
+m = dict(zip(['one', 'two', 'three'], [1, 2, 3]))
 m.keys(), m.values(), m.items()  # view objects
 
 m.get('key', list())
