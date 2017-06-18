@@ -1,5 +1,7 @@
 {
   "require": {
-    "symfony/asset": "*"
+    "symfony/asset": "*",
+    "symfony/debug": "*",
+    "symfony/var-dumper": "*"
   }
 }

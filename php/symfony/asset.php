@@ -8,8 +8,12 @@ use Symfony\Component\Asset\UrlPackage;
 use Symfony\Component\Asset\VersionStrategy\StaticVersionStrategy;
 
 /**
- * path    -> Package: getVersion($path), getUrl($path)
- * version -> Strategy: getVersion($path), applyVersion($path)
+ * goal
+ * - abstraction of resource url
+ *
+ * design
+ *  path    -> Package: getVersion($path), getUrl($path)
+ *  version -> Strategy: getVersion($path), applyVersion($path)
  */
 
 $versionStrategy = new StaticVersionStrategy('v1', '%s?v=%s');
