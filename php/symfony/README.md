@@ -1,39 +1,48 @@
 # symfony source reading
 
-[x] Asset 0.5h // dedicated abstractions, browser game use case.
+language
+- [x] VarDumper 1.3h // dirty magic addressing php defect: var_dump() not so obvious.
+- [x] Debug 0.5h // dirty magic addressing php defect: no united exception, tedious debug options.
+- [x] PropertyAccess 0.5h // dirty magic addressing php defect: no united access grammar.
+- [x] PropertyInfo 1h // addressing php defect: reflection not so friendly.
+- [ ] Serializer
+- [ ] ClassLoader
+- [ ] Filesystem
+- [ ] Finder
 
-[x] VarDumper 1.3h // dirty magic.
-[ ] Debug
-[ ] PHPUnit Bridge
+cli
+- [ ] Console
+- [ ] OptionsResolver
 
-[ ] BrowserKit
-[ ] Cache
-[ ] ClassLoader
-[ ] Config
-[ ] Console
-[ ] CssSelector
-[ ] DependencyInjection
-[ ] DomCrawler
-[ ] Dotenv
-[ ] EventDispatcher
-[ ] ExpressionLanguage
-[ ] Filesystem
-[ ] Finder
-[ ] Form
-[ ] HttpFoundation
-[ ] HttpKernel
-[ ] Intl
-[ ] Ldap
-[ ] OptionsResolver
-[ ] Process
-[ ] PropertyAccess
-[ ] PropertyInfo
-[ ] Routing
-[ ] Security
-[ ] Serializer
-[ ] Stopwatch
-[ ] Templating
-[ ] Translation
-[ ] Validator
-[ ] Workflow
-[ ] Yaml
+http
+- [ ] BrowserKit
+- [ ] DomCrawler
+- [ ] HttpFoundation
+- [ ] HttpKernel
+- [ ] Routing
+- Ldap
+
+view
+- [ ] Validator
+- [ ] Form
+- [ ] CssSelector
+- [x] Asset 0.5h // dedicated abstractions, browser game use case.
+- [ ] Templating
+- [ ] ExpressionLanguage
+- [ ] Intl
+- [ ] Translation
+
+config
+- [ ] Config
+- [ ] Yaml
+- [ ] Dotenv
+
+components
+- [ ] Process
+- [ ] Cache
+- [ ] DependencyInjection
+- [ ] EventDispatcher
+- [ ] Security
+- [ ] Stopwatch
+- [ ] Workflow
+- PHPUnit Bridge

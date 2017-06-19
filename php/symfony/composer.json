@@ -2,6 +2,9 @@
   "require": {
     "symfony/asset": "*",
     "symfony/debug": "*",
-    "symfony/var-dumper": "*"
+    "symfony/var-dumper": "*",
+    "symfony/property-access": "*",
+    "symfony/property-info": "*",
+    "phpdocumentor/phpdocumentor": "2.*"
   }
 }
