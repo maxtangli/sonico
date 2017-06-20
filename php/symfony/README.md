@@ -5,8 +5,8 @@ language
 - [x] Debug 0.5h // dirty magic addressing php defect: no united exception, tedious debug options.
 - [x] PropertyAccess 0.5h // dirty magic addressing php defect: no united access grammar.
 - [x] PropertyInfo 1h // addressing php defect: reflection not so friendly.
-- [ ] Serializer
-- [ ] ClassLoader
+- ClassLoader // deprecated in Symfony 3.3 and it will be removed in 4.0, use composer instead.
+- [x] Serializer 0.8h // support json,xml,yaml,csv
 - [ ] Filesystem
 - [ ] Finder
 
