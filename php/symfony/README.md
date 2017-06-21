@@ -7,8 +7,8 @@ language
 - [x] PropertyInfo 1h // addressing php defect: reflection not so friendly.
 - ClassLoader // deprecated in Symfony 3.3 and it will be removed in 4.0, use composer instead.
 - [x] Serializer 0.8h // support json,xml,yaml,csv
-- [ ] Filesystem
-- [ ] Finder
+- [x] Filesystem 0.2h // addressing php defect: file api is not exception style.
+- [x] Finder 0.8h // addressing php defect: file api is not powerful for search.
 
 cli
 - [ ] Console

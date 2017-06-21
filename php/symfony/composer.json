@@ -5,8 +5,10 @@
     "symfony/var-dumper": "*",
     "symfony/property-access": "*",
     "symfony/property-info": "*",
-    "phpdocumentor/phpdocumentor": "2.*",
+    "phpdocumentor/phpdocumentor": "*",
     "symfony/class-loader": "*",
-    "symfony/serializer": "*"
+    "symfony/serializer": "*",
+    "symfony/filesystem": "*",
+    "symfony/finder": "*"
   }
 }
