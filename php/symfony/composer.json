@@ -1,14 +1,15 @@
 {
   "require": {
-    "symfony/asset": "*",
-    "symfony/debug": "*",
-    "symfony/var-dumper": "*",
-    "symfony/property-access": "*",
-    "symfony/property-info": "*",
-    "phpdocumentor/phpdocumentor": "*",
-    "symfony/class-loader": "*",
-    "symfony/serializer": "*",
-    "symfony/filesystem": "*",
-    "symfony/finder": "*"
+    "symfony/asset": "3.3.*",
+    "symfony/debug": "3.3.*",
+    "symfony/var-dumper": "3.3.*",
+    "symfony/property-access": "3.3.*",
+    "symfony/property-info": "3.3.*",
+    "symfony/class-loader": "3.3.*",
+    "symfony/serializer": "3.3.*",
+    "symfony/filesystem": "3.3.*",
+    "symfony/finder": "3.3.*",
+    "symfony/options-resolver": "3.3.*",
+    "symfony/console": "3.3.*"
   }
 }
