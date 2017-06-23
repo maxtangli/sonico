@@ -10,6 +10,7 @@
     "symfony/filesystem": "3.3.*",
     "symfony/finder": "3.3.*",
     "symfony/options-resolver": "3.3.*",
-    "symfony/console": "3.3.*"
+    "symfony/console": "3.3.*",
+    "symfony/stopwatch": "3.3.*"
   }
 }

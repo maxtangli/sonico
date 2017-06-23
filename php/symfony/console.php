@@ -21,6 +21,8 @@ require_once __DIR__ . '/vendor/autoload.php';
  * - InputInterface <- Input <- ArgvInput, ArrayInput, StringInput extends ArgvInput
  * - InputDefinition: a set of InputArgument and InputOption
  * - OutputInterface <- StreamOutput <- ConsoleOutput, BufferedOutput, NullOutput
+ * - DescriptorInterface <- Descriptor <- Text, Json, Markdown, Xml
+ * - HelperInterface <- Helper <- DescriptionHelper, QuestionHelper, etc.
  *
  * code
  * Application.new
@@ -40,8 +42,13 @@ require_once __DIR__ . '/vendor/autoload.php';
  *  $input->validate();
  *  execute()
  *
- * HelperCommand
+ * HelperCommand.run
+ *  command = application.find command_name
+ *  DescriptorHelper.describe output, command, format, raw_text
+ *   descriptor.describe output, command, option
+ *
  * ListCommand
+ *  DescriptorHelper.describe output, application, format, raw_text, namespace
  */
 class HelloCommand extends Command {
     protected function configure() {
