@@ -11,13 +11,7 @@ language
 - [x] Serializer 0.8h // support json,xml,yaml,csv.
 - [x] Filesystem 0.2h // addressing php defect: file api is not exception style.
 - [x] Finder 0.8h // BEAUTIFUL! addressing php defect: file api is not powerful for search.
-
-feature
-- [ ] Process
-- [ ] EventDispatcher
-- [x] Cache 1h // PSR cache implementation.
-- [x] Console 1.7h // console application with rich features.
-- [ ] Workflow // FSM.
+- Process 0.1h // wrap proc_open() for rich features.
 
 config
 - [x] OptionsResolver 0.3h // resolve options.
@@ -25,6 +19,12 @@ config
 - Config // interface for various config files.
 - Dotenv // parse .env file.
 - Yaml // parse .yaml file.
+
+feature
+- [x] Console 1.7h // console application with rich features.
+- [x] Cache 1h // PSR cache implementation.
+- [x] EventDispatcher 0.4h// mediator pattern.
+- [x] Workflow 0.3h // FSM with event mechanism.
 
 web
 - [ ] BrowserKit
