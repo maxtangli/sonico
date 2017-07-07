@@ -15,7 +15,7 @@ language
 
 config
 - [x] OptionsResolver 0.3h // resolve options.
-- [ ] DependencyInjection
+- DependencyInjection
 - Config // interface for various config files.
 - Dotenv // parse .env file.
 - Yaml // parse .yaml file.
@@ -32,14 +32,14 @@ web
 - [ ] HttpFoundation
 - [ ] HttpKernel
 - [ ] Routing
-- [ ] Security
+- [ ] Security 0.3h
 - Ldap
 
 view
 - [ ] Validator
 - [ ] Form
 - [x] Asset 0.5h // dedicated abstractions, browser game use case.
-- [ ] CssSelector
+- CssSelector
 - [ ] Templating
 - [ ] ExpressionLanguage
 - [ ] Intl
