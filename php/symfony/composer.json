@@ -17,6 +17,9 @@
     "symfony/event-dispatcher": "3.3.*",
     "symfony/workflow": "3.3.*",
     "symfony/dependency-injection": "3.3.*",
-    "symfony/security": "3.3.*"
+    "symfony/security": "3.3.*",
+    "symfony/validator": "3.3.*",
+    "doctrine/common": "*",
+    "symfony/form": "3.3.*"
   }
 }
