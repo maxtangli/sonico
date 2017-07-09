@@ -19,12 +19,22 @@ config
 - Config // interface for various config files.
 - Dotenv // parse .env file.
 - Yaml // parse .yaml file.
+- [x] ExpressionLanguage 1.1h // advanced config expression.
 
 feature
-- [x] Console 1.7h // console application with rich features.
 - [x] Cache 1h // PSR cache implementation.
 - [x] EventDispatcher 0.4h// mediator pattern.
 - [x] Workflow 0.3h // FSM with event mechanism.
+- [x] Console 1.7h // console application with rich features.
+
+view
+- [x] Asset 0.5h // dedicated abstractions, browser game use case.
+- CssSelector
+- [x] Validator 0.8h // flexible validation of object.
+- Templating 0.1h // a template engine base for twig.
+- [ ] Intl
+- [ ] Translation
+- [ ] Form
 
 web
 - [ ] BrowserKit
@@ -34,13 +44,3 @@ web
 - [ ] Routing
 - [ ] Security 0.3h
 - Ldap
-
-view
-- [ ] Validator 0.5h
-- [ ] Form
-- [x] Asset 0.5h // dedicated abstractions, browser game use case.
-- CssSelector
-- [ ] Templating
-- [ ] ExpressionLanguage
-- [ ] Intl
-- [ ] Translation
