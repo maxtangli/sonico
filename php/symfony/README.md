@@ -29,18 +29,18 @@ feature
 
 view
 - [x] Asset 0.5h // dedicated abstractions, browser game use case.
+- DomCrawler 0.1h
 - CssSelector
 - [x] Validator 0.8h // flexible validation of object.
 - Templating 0.1h // a template engine base for twig.
-- [ ] Intl
-- [ ] Translation
+- Intl // i18n
+- Translation // i18n
 - [ ] Form
 
 web
-- [ ] BrowserKit
-- [ ] DomCrawler
-- [ ] HttpFoundation
-- [ ] HttpKernel
+- BrowserKit 0.1h // a browser simulator support link, form, cookie.
+- HttpFoundation 0.1h // http utils e.g. request, response, cookie, file.
+- HttpKernel 0.2h // a structured process for converting a Request into a Response by EventDispatcher.
 - [ ] Routing
 - [ ] Security 0.3h
 - Ldap
