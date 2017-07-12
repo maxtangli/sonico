@@ -41,6 +41,6 @@ web
 - BrowserKit 0.1h // a browser simulator support link, form, cookie.
 - HttpFoundation 0.1h // http utils e.g. request, response, cookie, file.
 - HttpKernel 0.2h // a structured process for converting a Request into a Response by EventDispatcher.
-- [ ] Routing
+- [x] Routing 0.5h // rich featured route system.
 - [ ] Security 0.3h
 - Ldap
