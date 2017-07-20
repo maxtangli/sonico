@@ -48,7 +48,7 @@ $form = $formFactory->createBuilder()
 $_GET['task'] = 'learn symfony';
 $_GET['dueDate'] = '2017-07-18';
 $request = Request::createFromGlobals();
-// todo set form name?
+// form name set by template?
 
 // bad design? should throw Exception for invalid request rather than return null.
 $form->handleRequest($request);

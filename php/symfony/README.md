@@ -35,7 +35,7 @@ view 8
 - Templating 0.1h // a template engine base for twig.
 - Intl // i18n
 - Translation // i18n
-- [ ] Form 0.9h
+- [x] Form 1h
 
 web 6
 - BrowserKit 0.1h // a browser simulator support link, form, cookie.
@@ -47,6 +47,7 @@ web 6
 
 ## summary
 
+- total: 13.8h
 - To be flexible and plugable, separate interfaces in fine granularity.
 - Most frequently used design pattern: Builder.
 - Cache objects that are complex to generate.
