@@ -33,6 +33,8 @@ j = case i
         1
       when 2 then
         'hello5'
+      else
+        nil
     end
 puts j
 

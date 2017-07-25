@@ -7,3 +7,4 @@
 # Eloquent Ruby.Russ Olsen.2011
 
 3. more clear control: unless, until, case 0.5h
+4. array, hash 0.4h
