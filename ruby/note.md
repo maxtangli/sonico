@@ -9,3 +9,4 @@
 3. more clear control: unless, until, case 0.5h
 4. array, hash 0.4h
 5. string, test, rspec 0.7h
+6. module, class, block 0.7h
