@@ -11,3 +11,5 @@
 5. string, test, rspec 0.7h
 6. module, class, block 0.7h
 7. Enumerable, yome science 1.6h
+
+8. meta programming: hook 0.4h
