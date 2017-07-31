@@ -13,3 +13,4 @@
 7. Enumerable, yome science 1.6h
 
 8. meta programming: hook 0.4h
+9. meta programming: method_missing 0.4h
