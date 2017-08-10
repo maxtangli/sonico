@@ -18,6 +18,17 @@ int main() {
    return 1;
  }
  
+ if (access("file.txt", R_OK | W_OK) < 0 ){
+   printf("failed access.\n");
+   return 1;
+ }
+
+ // ensure temp file be removed even if this program crashed.
+ if (unlink("file.txt") < 0) {
+   printf("failed unlink. %s\n", strerror(errno));
+   return 1;
+ }
+ 
  off_t currpos = lseek(fd, 0, SEEK_CUR);
  printf("currpos: %d\n", currpos);
 
