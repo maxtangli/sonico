@@ -24,6 +24,7 @@ int main() {
  }
 
  // ensure temp file be removed even if this program crashed.
+ // or use tmpfile() to create a temp file, which will be deleted when shutdown.
  if (unlink("file.txt") < 0) {
    printf("failed unlink. %s\n", strerror(errno));
    return 1;
@@ -57,6 +58,11 @@ int main() {
   return 1;
  }
  printf("%s\n", buf);
+
+ // about buffer
+ // - full buffer: e.g. file. malloc() for first io, fill buffer or flush() to save disk.
+ // - line buffer: e.g. terminal such as stdin, stdout. encounter \n or flush() to do actual io.
+ // - no buffer: e.g. stderr. do actual io immediately.
 
  int ret = close(fd);
  if (ret == -1) {
