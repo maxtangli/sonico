@@ -1,8 +1,8 @@
 # Advanced Programming in the UNIX Environment, Third Edition
 
 0. setup env, hello. 1h
-1. file. 2.1h
-2. process.
+1. file, io. 2.1h
+2. process env. 1.1h
 
 # note: vim
 
