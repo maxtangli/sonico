@@ -5,6 +5,7 @@
 2. process env. 1.1h
 3. process control. 0.6h
 4. BSD login. 1.2h
+5. thread create. 1h
 
 # note: vim
 
@@ -13,5 +14,5 @@
 :verbose map <F5>
 
 ~/.vimrc
-map <F5> :w<CR>:!gcc % && ./a.out;rm a.out<CR>
+map <F5> :w<CR>:!gcc pthread % && ./a.out;rm a.out<CR>
 ~~~~
