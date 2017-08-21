@@ -6,6 +6,7 @@
 3. process control. 0.6h
 4. BSD login. 1.2h
 5. thread create. 1h
+6. thread sync. 0.6h
 
 # note: vim
 
