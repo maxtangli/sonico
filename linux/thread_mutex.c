@@ -18,6 +18,9 @@ void shared_plus(bool use_lock) {
   // for non-blocking case, use pthread_mutex_trylock().
   // for limited time blocking case, use pthread_mutex_timedlock().
   // for shared-exclusive case, use rwlock functions e.g. rdlock, wrlock.
+  // cond??
+  // for busy-waiting case, use spin.
+  // for sync multiple threads, use barrier.
   if (pthread_mutex_lock(&lock) != 0) {
     puts("failed pthread_mutex_lock.");
     exit(1);
