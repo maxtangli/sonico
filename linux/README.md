@@ -10,6 +10,7 @@
 7. log. 0.3h
 8. io: select. 0.9h
 9. io: poll. 0.5h
+10. IPC: pipe. 0.9h
 
 # note: vim
 
