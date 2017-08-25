@@ -9,6 +9,7 @@
 6. thread sync. 0.7h
 7. log. 0.3h
 8. io: select. 0.9h
+9. io: poll. 0.5h
 
 # note: vim
 
