@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <sys/select.h>
 #include <poll.h>
+#include <sys/epoll.h>
 
 int main() {
   // blocking io
@@ -40,9 +41,38 @@ int main() {
       pollfds[0].revents, pollfds[1].revents, pollfds[2].revents); 
 
   // 3.epoll: pros. high performance.
-  // todo
+  int fd = 1;
 
+  int epoll_fd = epoll_create1(0); 
+  if (epoll_fd < 0) {
+    printf("epoll_create() returns %d.\n", epoll_fd);
+    return 1;
+  }
 
+  struct epoll_event event;
+  event.data.fd = fd;
+  event.events = EPOLLIN | EPOLLOUT;
+  int ret = epoll_ctl(epoll_fd, EPOLL_CTL_ADD, fd, &event);  
+  if (ret < 0) {
+    printf("epoll_ctl() returns %d.\n", ret);
+    return 1;
+  }
+
+  struct epoll_event events[100];
+  int max_events = 100;
+  int timeout = -1; // 0 immediately; -1 any event; n>0 ms
+  int nr_events = epoll_wait(epoll_fd, events, max_events, timeout);
+  if (nr_events < 0) {
+    printf("epoll_wait() returns %d.\n", nr_events);
+    return 1;
+  } 
+
+  int i;
+  for (i=0; i<nr_events; ++i) {
+    // events
+    printf("event=%ld on fd=%d\n", events[i].events, events[i].data.fd);
+  } 
+    
   // asynchrous io: cons. limited file types support, single signal.
 
   // mmap: map file to memory buffer.

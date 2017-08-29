@@ -13,6 +13,11 @@
 10. IPC: pipe etc. 1.3h
 11. network IPC: socket.
 
+# Linux System Programming(2nd).Robert Love.2013
+
+0. overview. 0.1h
+1. io: epoll. 0.5h 
+
 # note: vim
 
 ~~~~
