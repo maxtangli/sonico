@@ -2,7 +2,7 @@
 
 0. hello 0.2h //sudo yum install haskell-platform --enablerepo=epel
 1. tutorial 0.4h 
-2. Learn You a Haskell for Great Good.Miran Lipovaca.2011 0.7h
+2. Learn You a Haskell for Great Good.Miran Lipovaca.2011 1.1h
 
 # note: basics
 
