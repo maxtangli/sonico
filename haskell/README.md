@@ -4,6 +4,7 @@
 1. tutorial 0.4h 
 2. Learn You a Haskell for Great Good.Miran Lipovaca.2011 1.1h
 3. beautiful/primes 0.3h
+4. fmap 0.3h
 
 # note: basics
 
