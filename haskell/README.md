@@ -11,6 +11,7 @@ try
 https://www.haskell.org/tutorial/
 
 1. types 1.2h
+2. functions 0.8h
 
 # note 
 
