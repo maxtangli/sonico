@@ -45,6 +45,7 @@ fringe (Branch left right) =  fringe left ++ fringe right
 
 // type synonyms
 type AssocList a b = [(a,b)]
+
 ~~~~
 
 # list
@@ -139,21 +140,131 @@ zip (x:xs) (y:ys)       = (x,y) : zip xs ys
 zip  xs     ys          = []
 ~~~~
 
+# patterns
+
+~~~~
+// as-pattern to duplicate first value
+f s@(x:xs) = x:s
+
+// wild-card
+head (x:_)             = x
+tail (_:xs)            = xs
+
+// guard
+sign x | x > 0 = 1
+       | x == 0 = 0
+       | x < 0 = -1
+
+// case
+take m ys = case (m,ys) of
+              (0,_)       ->  []
+              (_,[])      ->  []
+              (n,x:xs)    ->  x : take (n-1) xs	   
+
+// let
+let take5s = filter (==5) in take5s [1..10]
+
+// where
+f x y  |  y>z           =  ...
+       |  y==z          =  ...
+       |  y<z           =  ...
+     where z = x*x
+
+// layout: haskell use column!
+~~~~
+
+# overloading
+
+~~~~
+// declartion
+class Eq a where 
+  (==) :: a -> a -> Bool
+
+// implementation  
+instance Eq Integer where 
+  x == y =  x `integerEq` y
+instance Eq Float where
+  x == y =  x `floatEq` y
+instance (Eq a) => Eq (Tree a) where 
+  Leaf a         == Leaf b          =  a == b
+  (Branch l1 r1) == (Branch l2 r2)  =  (l1==l2) && (r1==r2)
+  _              == _               =  False  
+  
+// class extension
+class  (Eq a) => Ord a  where
+  (<), (<=), (>=), (>)  :: a -> a -> Bool
+  max, min              :: a -> a -> a  
+
+// fmap: ???  
+class Functor f where
+  fmap :: (a -> b) -> f a -> f b  
+
+instance Functor Tree where
+  fmap f (Leaf x)       = Leaf   (f x)
+  fmap f (Branch t1 t2) = Branch (fmap f t1) (fmap f t2)  
+~~~~
+
+# io
+
+~~~~
+getChar :: IO Char
+putChar :: Char -> IO ()
+
+// bind operator: >>=
+// bind syntactic sugar: do
+
+return  :: a -> IO a
+
+getLine :: IO String
+getLine =  do c <- getChar
+			  if c == '\n'
+				   then return ""
+				   else do l <- getLine
+						   return (c:l)
+
+main :: IO ()
+main =  do c <- getChar
+           putChar c
+		   return (c == 'y')
+		   
+todoList :: [IO ()]
+todoList = [putChar 'a',
+            do putChar 'b'
+               putChar 'c',
+            do c <- getChar
+               putChar c] 
+			   
+sequence_        :: [IO ()] -> IO ()
+sequence_ []     =  return ()
+sequence_ (a:as) =  do a
+                       sequence as
+					   
+sequence_ :: [IO ()] -> IO ()
+sequence_ =  foldr (>>) (return ())
+
+putStr :: String -> IO ()
+putStr s =  sequence_ (map putChar s)
+
+isEOFError :: IOError -> Bool
+catch :: IO a -> (IOError -> IO a) -> IO a
+
+getChar' :: IO Char
+// getChar' =  getChar `catch` (\e -> return '\n')
+getChar' =  getChar `catch` eofHandler where
+    eofHandler e = if isEofError e then return '\n' else ioError e
+	
+getLine' :: IO String
+getLine' = catch getLine'' (\err -> return ("Error: " ++ show err))
+        where
+                   getLine'' = do c <- getChar'
+ 	                       if c == '\n' then return ""
+                                            else do l <- getLine'
+                                                    return (c:l)													
+~~~~
+		   
 # ghci
 
 ~~~~
 :l filename // load
 :t value // type
-~~~~
-
-# let
-
-~~~~
-let x = 4 in x * x // let var = expression in body
-
-let take5s = filter (==5) in map take5s [[1,5],[5],[1,1]] // custom function
-
-let (a:b:c:[]) = "xyz" in a
-let (a:_) = "xyz" in a
-let (_,a:_) = (10,"abc") in a
 ~~~~

@@ -12,6 +12,7 @@ https://www.haskell.org/tutorial/
 
 1. types 1.2h
 2. functions 0.8h
+3. io 0.7h
 
 # note 
 
