@@ -13,6 +13,11 @@ https://www.haskell.org/tutorial/
 1. types 1.2h
 2. functions 0.8h
 3. io 0.7h
+4. fmap, monad 0.7h
+
+Learn You a Haskell for Great Good.Miran Lipovaca.2011
+
+1. practice: fizzbuzz 0.7h
 
 # note 
 

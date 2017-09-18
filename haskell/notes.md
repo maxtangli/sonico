@@ -71,7 +71,7 @@ map (add 1) [1,2,3] => [2,3,4]
 inc = \x -> x+1
 add = \x y -> x+y
 
-// section
+// section: partially applied infix function
 inc = (+ 1)
 add = (+)
 
@@ -153,7 +153,7 @@ tail (_:xs)            = xs
 // guard
 sign x | x > 0 = 1
        | x == 0 = 0
-       | x < 0 = -1
+       | otherwise = -1
 
 // case
 take m ys = case (m,ys) of
@@ -194,14 +194,6 @@ instance (Eq a) => Eq (Tree a) where
 class  (Eq a) => Ord a  where
   (<), (<=), (>=), (>)  :: a -> a -> Bool
   max, min              :: a -> a -> a  
-
-// fmap: ???  
-class Functor f where
-  fmap :: (a -> b) -> f a -> f b  
-
-instance Functor Tree where
-  fmap f (Leaf x)       = Leaf   (f x)
-  fmap f (Branch t1 t2) = Branch (fmap f t1) (fmap f t2)  
 ~~~~
 
 # io
@@ -261,7 +253,65 @@ getLine' = catch getLine'' (\err -> return ("Error: " ++ show err))
                                             else do l <- getLine'
                                                     return (c:l)													
 ~~~~
-		   
+
+# fmap
+
+~~~~
+// fmap: ???  
+// http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html
+class Functor f where
+  fmap :: (a -> b) -> f a -> f b  
+
+instance Functor [] where
+    fmap = map
+
+instance Functor ((->) r) where
+    fmap f g = f . g	  
+  
+instance Functor Tree where
+  fmap f (Leaf x)       = Leaf   (f x)
+  fmap f (Branch t1 t2) = Branch (fmap f t1) (fmap f t2)  
+~~~~
+  
+# monad
+
+~~~~
+// used in: do, io etc.
+// monadic classes: Functor, Monad, MonadPlus, [], Maybe
+infixl 1 >>, >>=
+class Monad m where
+    (>>=) :: m a -> (a -> m b) -> m b
+    (>>) :: m a -> m b -> m b
+    return :: a -> m a
+    fail :: String -> m a
+
+    m >> k =  m >>= \_ -> k
+
+do e1 ; e2 = e1 >> e2
+do p <- e1; e2 = e1 >>= \p -> e2
+
+// https://stackoverflow.com/questions/44965/what-is-a-monad
+// monad chains operations in some specific, useful way
+[x*2 | x<-[1..10], odd x]
+
+do
+   x <- [1..10]
+   if odd x 
+       then [x * 2] 
+       else []
+
+[1..10] >>= (\x -> if odd x then [x*2] else [])
+
+do
+   putStrLn "What is your name?"
+   name <- getLine
+   putStrLn ("Welcome, " ++ name ++ "!")
+   
+putStrLn "What is your name?"
+>>= (\_ -> getLine)
+>>= (\name -> putStrLn ("Welcome, " ++ name ++ "!"))   
+~~~~
+	
 # ghci
 
 ~~~~
