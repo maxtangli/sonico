@@ -18,6 +18,11 @@ https://www.haskell.org/tutorial/
 Learn You a Haskell for Great Good.Miran Lipovaca.2011
 
 1. practice: fizzbuzz 0.7h
+2. read remain chapters 0.5h
+
+Thinking Functionally with Haskell.Richard Bird.2014
+
+1. todo
 
 # note 
 
