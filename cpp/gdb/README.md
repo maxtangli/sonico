@@ -1,3 +1,4 @@
+~~~~
 gcc -g -Wall -o insert_sort ins.c # -g : save symbol table
 gdb insert_sort -tui
 run 12 5
@@ -19,3 +20,4 @@ set var = val
 
 info threads
 thread 3
+~~~~
