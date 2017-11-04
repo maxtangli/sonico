@@ -11,5 +11,5 @@ bs2 = Bars('T i  I Iii  TTT')
 bs = bs1
 for i in range(30):
     s = decode_morse(str(bs))
-    print(s)
+    print(s)  # UNTEN -> NETNU
     bs.next()

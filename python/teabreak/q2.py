@@ -42,4 +42,4 @@ for c in commands:
     elif c == '!':
         output += chr((ord('0') + acc) % 128)
 
-print('answer: ' + output)
+print('answer: ' + output)  # MOON -> NOOM(invalid)
