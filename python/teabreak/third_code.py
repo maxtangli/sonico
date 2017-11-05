@@ -1,17 +1,8 @@
 def decode_morse(s):
-    result = ''
-    token = ''
-    for ch in s:
-        if ch != ' ':
-            token += ch
-        else:
-            if token != '':
-                result += decode_morse_single(token)
-                result += ' '
-                token = ''
-            else:
-                result += ' '
-    return result
+    import re
+    tokens = re.split('\s+', s.strip())
+    decoded_tokens = [decode_morse_single(token) for token in tokens]
+    return ','.join(decoded_tokens)
 
 
 def decode_morse_single(s):
