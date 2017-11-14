@@ -10,13 +10,20 @@ wget openmpi-3.0.0.tar.gz
 tar xvzf openmpi-3.0.0.tar.gz
 
 cd openmpi-3.0.0
-./configure --prefix=/home/ec2-user/sonico/cpp/mpi/install
+./configure --prefix=/home/ec2-user/sonico/openmpi/install
 make all install
 
 cd ..
 export PATH=$PATH:install/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:install/bin
 mpicc hello_c.c -o hello
 mpiexec -np 1 ./hello
+
+# https://www.open-mpi.org/faq/?category=running#oversubscribing
+echo localhost slots=4 > my-hostfile
+mpirun -np 4 --hostfile my-hostfile ./hello
+mpirun -np 4 --hostfile my-hostfile ./ring
+mpirun -np 4 --hostfile my-hostfile ./connectivity
 ~~~~
 
 # basics
