@@ -37,7 +37,7 @@ ansi-c quoting # e.g. \n
 >/dev/null 2>&1 silent
 < redirect input
 | pipe, means result as input
-[time [-p]] [!] command1 [ | or |& command2 ] ¡­
+[time [-p]] [!] command1 [ | or |& command2 ] â€¦
 |& shorthand for 2>&1 |
 | tee [-a] file1 file2... # copy stdout to files
 
@@ -107,7 +107,6 @@ cat -n lines.txt
 cat -s multi_blanks.txt
 cat -T tabs.txt
 
-
 # export $1=$2:$1
 prepend() { [ -d "$2" ] && eval $1=\"$2':'\$$1\" && export $1; }
 
@@ -124,6 +123,7 @@ echo "GNU  is  not  UNIX.  Recursive  right  ?" | tr -s ' '
 cat multi_blanks.txt | tr -s '\n'
 cat sum.txt | echo $[ $(tr '\n' '+' ) 0 ]
 
+sort -nrk 3 sort1.txt | uniq -c
 
 # ls display
 find . \( -name "*.txt" -o -name "*.pdf" \) -path "*/slynux/*"
@@ -147,8 +147,21 @@ ls -lt # by modification time desc
 # symbol link
 ln -s target linkname
 
+# rename files
+
+rename *.JPG *.jpg
+rename 's/ /_/g' *
+
+# temp files
+mktemp # /tmp/tmp.wWlzfGWhCW
+mktemp -u test.XXX
+
 # merge files
 cat * > merged.txt
+
+# split files
+split -b 10k data.file -d -a 4 split_file
+csplit server.log /SERVER/ -n 2 -s {*} -f server -b "%02d.log"
 
 # compress: -c compress -x extract -v verbose -z .gz -f .tar
 tar -cvzf /mybackupfolder/backup.tar.gz /backup-target-dir
