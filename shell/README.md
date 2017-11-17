@@ -95,6 +95,18 @@ script execution impl: fork(), setup redirect, exec(), wait()
 # scenes
 
 ~~~~
+# info
+$SHELL --version
+
+type which
+whatis info help --help man
+
+# env
+prepend() { [ -d "$2" ] && eval $1=\"$2':'\$$1\" && export $1; } # export $1=$2:$1
+
+alias name='command1; command2'
+unalias name
+
 # input
 read -n 2 chars
 read -p "enter password:" -s password
@@ -106,9 +118,12 @@ echo 'Text through stdin' | cat - file.txt
 cat -n lines.txt
 cat -s multi_blanks.txt
 cat -T tabs.txt
+seq 20 | head -n 10
+tail -f /var/log/messages
 
-# export $1=$2:$1
-prepend() { [ -d "$2" ] && eval $1=\"$2':'\$$1\" && export $1; }
+date --date 'Thu Nov 18 08:07:21 IST 2010' +%Y%m%d
+date -d '-1 days'
+time PIPELINE
 
 # text edit
 sed -i '1i#!/bin/bash' script.sh
@@ -125,6 +140,20 @@ cat sum.txt | echo $[ $(tr '\n' '+' ) 0 ]
 
 sort -nrk 3 sort1.txt | uniq -c
 
+wc file
+
+
+
+# directory
+cd /var/www
+cd -
+
+pushd /var/www
+pushd /usr/src
+dirs
+pushd +2
+popd +2
+
 # ls display
 find . \( -name "*.txt" -o -name "*.pdf" \) -path "*/slynux/*"
 find . -iregex '.*\(\.py\|\.sh\)$'
@@ -132,6 +161,7 @@ find . -type f -name "*.swp" -delete
 find . -type f -name "*.php" ! -perm 644
 ls -1
 ls -lh
+tree # require setup
 
 # ls filter
 ls -R
@@ -145,16 +175,26 @@ ls -S # by size desc
 ls -lt # by modification time desc
 
 # symbol link
-ln -s target linkname
+ln -s target symbolic_link_name
 
 # rename files
-
 rename *.JPG *.jpg
 rename 's/ /_/g' *
 
 # temp files
+touch
 mktemp # /tmp/tmp.wWlzfGWhCW
 mktemp -u test.XXX
+dd if=/dev/zero of=junk.data bs=1M count=1
+
+# compare files
+comm A.txt B.txt -3 | sed 's/^\t//'
+
+diff -u version1.txt version2.txt > version.patch # patch require setup
+patch -p1 version1.txt < version.patch # to version2
+patch -p1 version1.txt < version.patch # reverse to version1 
+
+diff -Naur directory1 directory2
 
 # merge files
 cat * > merged.txt
@@ -166,11 +206,6 @@ csplit server.log /SERVER/ -n 2 -s {*} -f server -b "%02d.log"
 # compress: -c compress -x extract -v verbose -z .gz -f .tar
 tar -cvzf /mybackupfolder/backup.tar.gz /backup-target-dir
 tar -xvzf target.tar.gz
-
-# date
-date --date 'Thu Nov 18 08:07:21 IST 2010' +%Y%m%d
-date -d '-1 days'
-time PIPELINE
 
 # send mail
 echo "contents" | mail -s "subject" someone@somecompany.com
