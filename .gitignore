@@ -2,3 +2,4 @@
 python/
 php/BulkSqlBuilder/vendor/
 php/BulkSqlBuilder/composer.lock
+docker/.vagrant/
