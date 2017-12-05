@@ -15,7 +15,7 @@ bug: synced folders not automatically sharing in centos 7
 - problem: https://github.com/hashicorp/vagrant/issues/7811
 - solution: vagrant plugin install vagrant-vbguest -> use bento/centos-7.3 instead.
 
-https://docs.docker.com/get-started/part2/
+container: https://docs.docker.com/get-started/part2/
 ~~~~
 # build&run
 docker build -t friendlyhello .
@@ -42,9 +42,31 @@ docker push maxtangli/get-started:part2
 docker run -p 80:80 maxtangli/get-started:part2
 ~~~~
 
-https://docs.docker.com/get-started/part3/#introduction
+service
+- https://docs.docker.com/get-started/part3/
+- task: a single container running in a service.
+- service: composition of tasks to serve a goal.
+- 
 ~~~~
+docker swarm init
+
+vim docker-compose.yml
+docker stack deploy -c docker-compose.yml getstartedlab
+
+docker service ls
+docker service ps getstartedlab_web
+curl -4 http://localhost
+
+docker stack rm getstartedlab
+
+docker swarm leave --force
 ~~~~
+
+swarm
+- https://docs.docker.com/get-started/part4/
+- swarm: a group of machines that are running Docker and joined into a cluster.
+- swarm manager: the only machine in a swarm to execute docker command.
+- swarm manager's strategies to run containers: emptiest node, global etc.
 
 commands
 - run install softwares and create new image layer
