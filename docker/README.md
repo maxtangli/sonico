@@ -3,7 +3,7 @@
 todo
 - [x] install 0.5h
 - [x] bug: synced folders not automatically sharing in centos7 1h
-- [ ] tutorial 0.5h
+- [ ] tutorial 1h
 
 install
 - windows: docker <- hyper-v <- windows10 pro <- not free.
@@ -61,12 +61,26 @@ docker stack rm getstartedlab
 
 docker swarm leave --force
 ~~~~
-
 swarm
 - https://docs.docker.com/get-started/part4/
 - swarm: a group of machines that are running Docker and joined into a cluster.
 - swarm manager: the only machine in a swarm to execute docker command.
 - swarm manager's strategies to run containers: emptiest node, global etc.
+~~~~
+#install VirtualBox
+#see https://wiki.centos.org/HowTos/Virtualization/VirtualBox
+sudo yum install wget
+cd /etc/yum.repos.d
+wget http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo
+sudo yum install VirtualBox-5.2
+# ... 5min passed
+sudo usermod -a -G vboxusers vagrant
+# VirtualBox inside VirtualBox wont work
+
+docker-machine create --driver virtualbox myvm1
+docker-machine create --driver virtualbox myvm2
+~~~~
+
 
 commands
 - run install softwares and create new image layer
