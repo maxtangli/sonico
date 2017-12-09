@@ -3,3 +3,4 @@ python/
 php/BulkSqlBuilder/vendor/
 php/BulkSqlBuilder/composer.lock
 docker/.vagrant/
+vagrant/multi/.vagrant/

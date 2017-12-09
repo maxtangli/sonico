@@ -6,6 +6,7 @@ references
 ~~~~
 # stores the box under a specific name so that multiple Vagrant environments can re-use it
 vagrant box add hashicorp/precise64
+vagrant box add bento/centos-7.4
 
 vagrant init
 # edit Vagrantfile ...
@@ -30,6 +31,10 @@ vagrant halt
 vagrant destory 
 
 # multi-machine
+- goal: define and control multiple guest machines per Vagrantfile.
+- if guest-addtion not installed: vagrant plugin install vagrant-vbguest
+- if guest-addtion update failed: halt running machines and retry.
+- default ssh password: vagrant.
 
 # using Docker as a provider
 
