@@ -3,7 +3,22 @@
 todo
 - [x] install 0.5h
 - [x] bug: synced folders not automatically sharing in centos7 1h
-- [ ] tutorial 1h
+- [x] vagrant: multi-machine 1h
+- [x] tutorial: get started. 2h
+
+- [ ] know more.
+
+overview
+- docker: an open platform for developing, shipping, and running applications.
+- impl: separate applications from infrastructure. deploy is same for develop and production. written in Go and use linux kernel features e.g. namespace such as pid, ipc, net, mnt, uts etc. to isolate; cgroups to limit resource; UnionFS to provide virtual filesystem for containers.
+- usecase: fast, consistent delivery; responsive deployment and scaling; running more workloads on the same hardware.
+
+docker engine
+- cli client: docker command.
+- rest api: talk to server.
+- server: dockerd daemon process. responsible for create and manage docker objects e.g. image, container, network, volume.
+
+# get started
 
 install
 - windows: docker <- hyper-v <- windows10 pro <- not free.
@@ -46,7 +61,6 @@ service
 - https://docs.docker.com/get-started/part3/
 - task: a single container running in a service.
 - service: composition of tasks to serve a goal.
-- 
 ~~~~
 docker swarm init
 
@@ -61,6 +75,7 @@ docker stack rm getstartedlab
 
 docker swarm leave --force
 ~~~~
+
 swarm
 - https://docs.docker.com/get-started/part4/
 - swarm: a group of machines that are running Docker and joined into a cluster.
@@ -79,8 +94,38 @@ sudo usermod -a -G vboxusers vagrant
 
 docker-machine create --driver virtualbox myvm1
 docker-machine create --driver virtualbox myvm2
+docker-machine ls
+
+docker-machine ssh myvm1 "docker swarm init --advertise-addr <myvm1 ip>"
+docker-machine ssh myvm2 "docker swarm join --token <token> <ip>:2377"
+docker-machine ssh myvm1 "docker node ls"
+
+docker-machine env myvm1
+eval $(docker-machine env myvm1)
+docker-machine ls
+
+docker stack deploy -c docker-compose.yml getstartedlab
+docker stack ps getstartedlab
+
+docker stack rm getstartedlab
+eval $(docker-machine env -u)
 ~~~~
 
+stack
+- stack: a group of interrelated services that share dependencies, and can be orchestrated and scaled together.
+~~~~
+vim docker-compose.yml
+docker stack deploy -c docker-compose.yml getstartedlab
+docker service ls
+~~~~
+
+network
+- network: a natural way to isolate containers from other containers or other networks.
+- default network: bridge.
+~~~~
+docker network ls
+docker run -itd --name=networktest ubuntu
+~~~~
 
 commands
 - run install softwares and create new image layer
