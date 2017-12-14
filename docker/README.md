@@ -1,22 +1,76 @@
-# docker
+# todo
 
-todo
+hello, docker
 - [x] install 0.5h
 - [x] bug: synced folders not automatically sharing in centos7 1h
 - [x] vagrant: multi-machine 1h
 - [x] tutorial: get started. 2h
 
+Docker in Action.Jeff Nickoloff.2016
 - [ ] know more.
+
+# overview
+
+cloud computing
+- IaaS: provide hardware for infra.
+- Paas: provide environment for developer.
+- Saas: provide app for user.
+- vm solution: low performance, slow deployment.
 
 overview
 - docker: an open platform for developing, shipping, and running applications.
 - impl: separate applications from infrastructure. deploy is same for develop and production. written in Go and use linux kernel features e.g. namespace such as pid, ipc, net, mnt, uts etc. to isolate; cgroups to limit resource; UnionFS to provide virtual filesystem for containers.
-- usecase: fast, consistent delivery; responsive deployment and scaling; running more workloads on the same hardware.
+
+usecase
+- high performance virtualization.
+- environment as code e.g. version management, sharing.
+- fast, consistent delivery.
+- responsive deployment and scaling.
+- running more workloads on the same hardware.
 
 docker engine
 - cli client: docker command.
 - rest api: talk to server.
 - server: dockerd daemon process. responsible for create and manage docker objects e.g. image, container, network, volume.
+
+concepts
+- image: create from Dockerfile or pull from DockerHub.
+- container: lightweight vm.
+
+# manual
+
+install in centos-7.4
+~~~~
+sudo yum install -y vim git
+
+sudo yum install docker-lastest
+
+sudo groupadd docker
+sudo usermod -aG docker $USER
+exit # vagrant reload, vagrant ssh
+
+sudo systemctl enable docker-latest
+exit # vagrant reload, vagrant ssh
+
+docker run hello-world
+~~~~
+
+run container
+~~~~
+docker run hello-world
+
+docker run --name web -d nginx
+docker container ls
+
+docker exec -it web
+docker run -it --link web:web --name web_test busybox /bin/sh
+wget -O web:80
+
+docker logs web
+
+docker restart web
+docker stop web
+~~~~
 
 # get started
 

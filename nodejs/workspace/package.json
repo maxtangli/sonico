@@ -1,0 +1,10 @@
+{
+  "name": "docker_main_console",
+  "version": "1.0.0",
+  "description": "Node.js main console.",
+  "author": "maxtangli <maxtangli@qq.com>",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  }
+}
