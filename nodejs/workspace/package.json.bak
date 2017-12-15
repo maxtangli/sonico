@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Node.js main console.",
   "author": "maxtangli <maxtangli@qq.com>",
-  "main": "echo_server.js",
+  "main": "main.js",
   "scripts": {
-    "start": "node echo_server.js"
+    "start": "node main.js"
   }
 }

@@ -41,7 +41,14 @@ concepts
 
 install in centos-7.4
 ~~~~
-sudo yum install -y vim git
+sudo cp /usr/share/zoneinfo/Japan /etc/localtime
+
+sudo yum install -y vim
+
+sudo yum install -y git
+git config --global user.name "tang"
+git config --global user.email "maxtangli@qq.com"
+git config --global push.default simple
 
 sudo yum install docker-lastest
 
