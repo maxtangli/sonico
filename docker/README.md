@@ -7,7 +7,7 @@ hello, docker
 - [x] tutorial: get started. 2h
 
 Docker in Action.Jeff Nickoloff.2016
-- [ ] know more.
+- [x] features overview 2h
 
 # overview
 
@@ -67,17 +67,44 @@ run container
 docker run hello-world
 
 docker run --name web -d nginx
-docker container ls
+docker ps
 
 docker exec -it web
 docker run -it --link web:web --name web_test busybox /bin/sh
 wget -O web:80
-
 docker logs web
+
+docker top web
+docker exec web ps
+docker exec web kill <pid>
 
 docker restart web
 docker stop web
+docker rm web
 ~~~~
+
+persistence
+- docker layer
+- volume
+
+network
+- closed: no network access.
+- bridged: default. contaner virtual interface. may specialfy dns name, bound rules.
+- joined: shared contaner virtual interface. less safty, port conflict issue.
+- open: DANGER. full access to host network.
+
+isolation
+- resource: memory, cpu, device.
+- os privilege.
+
+image packaging
+- commit: from container.
+- build: from dockerfile.
+- import: from filesystem.
+
+multi container and host
+- docker compose: a tool for defining, launching, and managing services, where a service is defined as one or more replicas of a Docker container.
+- swarm: multi-machine.
 
 # get started
 
