@@ -4,6 +4,43 @@ reference
 - http://chaijs.com/api/bdd/
 - https://gist.github.com/yoavniran/1e3b0162e1545055429e
 
+# chai
+
+http://chaijs.com/api/bdd/
+~~~~
+// chains just for readability
+to with at of
+be been is has have does
+that which and but same
+
+// adv.
+.not + ...
+.deep + .equal, .include, .members, .keys, .property
+.nested, .own + .property, .include
+.ordered, .any, .all + .members
+.itself + .respondTo
+
+// adj. type
+.a(type), .instanceof(type), .true, .false, .null, .undefined, .NaN, .finite, .arguments
+
+// adj. compare
+.equal, .eql, .least, .above, .most, .below, .within. .satisfy(predicate)
+
+// adj. object, array, string
+.property, .ownPropertyDescriptor, .keys, .respondTo(method)
+.throw, .fail, .extensible, .sealed, .frozen
+array|string|object.include(value), .match(regex), .string(substr)
+.an('array').that.is.empty, .lengthOf(7), .lengthOf.at.most(7), .members(array)
+
+// not recemmended
+.ok // ==true
+.exist // !== null && !== undefined
+.closeTo(expected, delta)
+.oneOf(array)
+.change, .increase.by, .decrease.by
+~~~~
+
+
 # ecmascript2017=es8
 
 ~~~~
