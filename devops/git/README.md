@@ -75,6 +75,42 @@ git clone file:///vagrant/sonico/devops/jenkins/guided-tour/remote/ local-pulled
 git ls-remote -h file:///vagrant/sonico/devops/jenkins/guided-tour/remote/ HEAD
 ~~~~
 
+join commits to keep clean commit history
+~~~~
+git reset --soft <your-commit>
+git commit --amend
+~~~~
+
+rebase feature branch to keep clean merge history
+~~~~
+git checkout my-branch
+git rebase master
+
+git checkout master
+git merge my-branch
+~~~~
+
+undo add
+~~~~
+git rm --cached <file>
+git reset
+~~~~
+
+undo commit or merge
+~~~~
+# commit -> untracked
+git reset ~HEAD
+
+# commit -> staging
+git reset --soft
+~~~~
+
+undo push
+~~~~
+# make sure no other fetchs
+git push -f origin last_known_good_commit:branch_name
+~~~~
+
 # internal
 
 ~~~~
