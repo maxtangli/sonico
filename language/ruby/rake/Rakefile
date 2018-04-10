@@ -1,0 +1,10 @@
+task default: %w[test]
+
+task :test do
+  ruby "hello.rb"
+end
+
+task :test2 do
+  ruby "hello.rb"
+  ruby "hello.rb"
+end
