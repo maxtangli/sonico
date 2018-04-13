@@ -178,6 +178,7 @@ end
 # grammar
 
 http://ruby-doc.org/core-2.4.3/doc/syntax/control_expressions_rdoc.html
+http://ruby-doc.org/core-2.4.3/doc/syntax/literals_rdoc.html
 ~~~~
 # control
 if, unless, case
@@ -197,6 +198,12 @@ class C
     # ...
   end
 end
+
+# percent strings
+%s %i %I
+% %q %Q %w %W
+%r
+%x
 ~~~~
 
 # stdlib
@@ -204,3 +211,19 @@ end
 ~~~~
 Forwardable, Observable, Singleton etc.
 ~~~~
+
+# rails
+
+Rails philosophy: DRY, Convention Over Configuration.
+
+link_to
+- 
+
+rotues
+- index
+- new, show, edit
+- create, update, destroy
+
+params
+- ActionController::Parameters.action_on_unpermitted_parameters = :raise
+- params.require(:person).permit(:name, :age)
