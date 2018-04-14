@@ -111,6 +111,45 @@ undo push
 git push -f origin last_known_good_commit:branch_name
 ~~~~
 
+# eol
+
+all files convert crlf -> lf
+~~~~
+rubymine: settings/editor/code style
+rubymine: file/line separators
+~~~~
+
+all files ensure newline at end of file
+~~~~
+rubymine: settings/editor/general/Ensure line feed at file end on save
+~~~~
+
+git config
+~~~~
+# Sets the line ending type to use in the working directory for files that have the text property set when core.autocrlf is false.
+git config --global core.eol lf
+# Setting this variable to "true" is the same as setting the text attribute to "auto" on all files and core.eol to "crlf".
+git config --global core.autocrlf input
+~~~~
+
+.gitattributes
+~~~~
+# Autodetect text files
+* text=auto
+
+# ...Unless the name matches the following
+# overriding patterns
+
+# Definitively text files 
+*.txt text
+*.c text
+*.h text
+
+# Ensure those won't be messed up with
+*.jpg binary
+*.data binary
+~~~~
+
 # internal
 
 ~~~~
