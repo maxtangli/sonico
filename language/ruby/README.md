@@ -206,6 +206,25 @@ end
 %x
 ~~~~
 
+# new features
+
+2.5
+~~~~
+do ... rescue ... end
+yiled_self: Unlike tap, it returns the result of the block. see: rails try
+
+About 5-10% performance improvement by removing all trace instructions from overall bytecode.
+Block passing by a block parameter (e.g. def foo(&b); bar(&b); end) is about 3 times faster than Ruby 2.4 by “Lazy Proc allocation” technique.
+~~~~
+
+2.4
+
+2.3
+~~~~
+# frozen_string_literal: true
+lonely operator &. see: activesupport try!
+~~~~
+
 # stdlib
 
 ~~~~
