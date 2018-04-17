@@ -116,6 +116,8 @@ git push -f origin last_known_good_commit:branch_name
 all files convert crlf -> lf
 ~~~~
 rubymine: settings/editor/code style
+
+# to manually convert
 rubymine: file/line separators
 ~~~~
 
@@ -124,30 +126,36 @@ all files ensure newline at end of file
 rubymine: settings/editor/general/Ensure line feed at file end on save
 ~~~~
 
-git config
+git eol config
+- http://adaptivepatchwork.com/2012/03/01/mind-the-end-of-your-line/
+- core.eol=native(default)|crlf|lf
+- core.autocrlf=false(default): do nothing.
+- core.autocrlf=true: checkout -> crlf, commit -> lf.
+- core.autocrlf=input: checkout -> do nothing, commit -> lf.
+- core.safecrlf=true|false
+- .gitattributes: define eol for specific files.
+
+example: windows lf, linux lf config
 ~~~~
-# Sets the line ending type to use in the working directory for files that have the text property set when core.autocrlf is false.
 git config --global core.eol lf
-# Setting this variable to "true" is the same as setting the text attribute to "auto" on all files and core.eol to "crlf".
 git config --global core.autocrlf input
 ~~~~
 
-.gitattributes
+example: windows crlf, linux lf
 ~~~~
-# Autodetect text files
-* text=auto
+git config --global core.eol crlf
+git config --global core.autocrlf true
+~~~~
 
-# ...Unless the name matches the following
-# overriding patterns
+# ignore
 
-# Definitively text files 
-*.txt text
-*.c text
-*.h text
+~~~~
+# mark unchanged .gitignore
+git update-index --assume-unchanged .gitignore
+git ls-files -v | grep '^[[:lower:]]'
 
-# Ensure those won't be messed up with
-*.jpg binary
-*.data binary
+# mark unchanged all symlink changes on windows
+git ls-files -s | awk '/120000/{print $4}' | xargs git update-index --assume-unchanged
 ~~~~
 
 # internal
