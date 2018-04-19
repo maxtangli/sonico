@@ -151,11 +151,10 @@ git config --global core.autocrlf true
 
 ~~~~
 # mark unchanged .gitignore
-git update-index --assume-unchanged .gitignore
-git ls-files -v | grep '^[[:lower:]]'
+git update-index --skip-worktree .gitignore
 
 # mark unchanged all symlink changes on windows
-git ls-files -s | awk '/120000/{print $4}' | xargs git update-index --assume-unchanged
+git ls-files -s | awk '/120000/{print $4}' | xargs git update-index --skip-worktree
 ~~~~
 
 # internal
