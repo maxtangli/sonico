@@ -175,6 +175,12 @@ class Struct
 end
 ~~~~
 
+# percent strings
+%s %i %I
+% %q %Q %w %W
+%r
+%x
+
 # grammar
 
 http://ruby-doc.org/core-2.4.3/doc/syntax/control_expressions_rdoc.html
@@ -191,20 +197,32 @@ rescue, ensure
 my_method(positional1, keyword1: value1, keyword2: value2)
 
 def my_method yield self end
+~~~~
 
-# singleton class
-class C
-  class << self
-    # ...
+# module
+
+use include to append both class and instance methods
+~~~~
+module Foo
+  def self.included(base)
+    base.extend(ClassMethods)
+  end
+  
+  module ClassMethods
+    def bar
+      puts 'class method'
+    end
+  end
+  
+  def foo
+    puts 'instance method'
   end
 end
-
-# percent strings
-%s %i %I
-% %q %Q %w %W
-%r
-%x
 ~~~~
+
+activesupport::concern
+
+Module#prepend to impl memoizer
 
 # new features
 
@@ -231,6 +249,16 @@ lonely operator &. see: activesupport try!
 Forwardable, Observable, Singleton etc.
 ~~~~
 
+# rspec
+
+~~~~
+expect to, not_to, and, or
+eq, be >, be_within(delta).of
+be, be_a, be_true, be_xxx
+match, include, cover
+raise_error, yiled
+~~~~
+
 # rails
 
 Rails philosophy: DRY, Convention Over Configuration.
@@ -246,3 +274,16 @@ rotues
 params
 - ActionController::Parameters.action_on_unpermitted_parameters = :raise
 - params.require(:person).permit(:name, :age)
+
+cache
+- page(removed from Rails 4.0): default off. 
+- action(removed from Rails 4.0): config/environments/ config.action_controller.perform_caching = true if production
+- fragment: <% cache_if admin?, product do %><%= render product %><% end %>
+- low-level: Rails.cache.fetch
+- sql: cache in an action, e.g. Product.all, Product.all. WARN
+
+cache config
+- config file: config.cache_store = ...
+- ActiveSupport::Cache::DalliStore: High performance memcached client for Ruby.
+- cache key: any object is ok.
+- bin/rails dev:cache
