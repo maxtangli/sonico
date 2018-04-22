@@ -1,3 +1,53 @@
+# setup
+
+rbenv
+~~~~
+# setup rbenv
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+cd ~/.rbenv && src/configure && make -C src
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+~/.rbenv/bin/rbenv init
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+exec $SHELL -l
+
+# setup rbenv-install
+mkdir -p "$(rbenv root)"/plugins
+git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+rbenv install --list
+
+# install rbenv ruby via rbenv-install
+sudo yum install -y openssl-devel readline-devel zlib-devel
+rbenv install 2.5.1
+rbenv global 2.5.1
+rbenv version
+
+# validate via rbenv-doctor script
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
+exec $SHELL -l
+ruby -v
+
+# install bundle
+gem install bundle
+echo 'alias be="bundle exec "' >> ~/.bashrc
+
+# install sqlite3
+sudo yum install -y sqlite-devel
+
+# install javascript runtime
+sudo yum install -y nodejs
+
+# install nokogiri
+# vagrant box update
+sudo yum install -y gcc ruby-devel zlib-devel
+
+# new rails project
+gem install rails
+rails new example
+cd example
+rails s
+# Yay! You’re on Rails!
+~~~~
+
 # Core 2.4.3
 
 http://ruby-doc.org/core-2.4.3/Kernel.html
@@ -26,8 +76,10 @@ module Kernel
 	rand(max=0)
 	
 	# context
-	require, require_relative
-	autoload(module, filename), load
+	load # for dev. read file everytime
+	require # common use. read file once and cache in memory
+	require_relative # rarely used since gems located in $LOAD_PATH.
+	autoload(module, filename) # call require when first accessed
 	global_variables, __dir__
 	__method__, __callee__, caller_xx, block_given?, iterator?	
 	
@@ -36,6 +88,28 @@ module Kernel
 	`cmd`, fork, exec, spawn, select, syscall, system, test
 	sleep, abort([msg]), exit, at_exit { block }, set_trace_func	
 end
+
+.rb .o .so .dll
+ruby -e 'puts $LOAD_PATH'
+/home/vagrant/.rbenv/rbenv.d/exec/gem-rehash
+/home/vagrant/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/did_you_mean-1.2.0/lib
+/home/vagrant/.rbenv/versions/2.5.1/lib/ruby/site_ruby/2.5.0
+/home/vagrant/.rbenv/versions/2.5.1/lib/ruby/site_ruby/2.5.0/x86_64-linux
+/home/vagrant/.rbenv/versions/2.5.1/lib/ruby/site_ruby
+/home/vagrant/.rbenv/versions/2.5.1/lib/ruby/vendor_ruby/2.5.0
+/home/vagrant/.rbenv/versions/2.5.1/lib/ruby/vendor_ruby/2.5.0/x86_64-linux
+/home/vagrant/.rbenv/versions/2.5.1/lib/ruby/vendor_ruby
+/home/vagrant/.rbenv/versions/2.5.1/lib/ruby/2.5.0
+/home/vagrant/.rbenv/versions/2.5.1/lib/ruby/2.5.0/x86_64-linux
+
+C:/Ruby25-x64/lib/ruby/site_ruby/2.5.0
+C:/Ruby25-x64/lib/ruby/site_ruby/2.5.0/x64-msvcrt
+C:/Ruby25-x64/lib/ruby/site_ruby
+C:/Ruby25-x64/lib/ruby/vendor_ruby/2.5.0
+C:/Ruby25-x64/lib/ruby/vendor_ruby/2.5.0/x64-msvcrt
+C:/Ruby25-x64/lib/ruby/vendor_ruby
+C:/Ruby25-x64/lib/ruby/2.5.0
+C:/Ruby25-x64/lib/ruby/2.5.0/x64-mingw32
 ~~~~
 
 http://ruby-doc.org/core-2.4.3/Object.html
@@ -199,6 +273,11 @@ my_method(positional1, keyword1: value1, keyword2: value2)
 def my_method yield self end
 ~~~~
 
+lambda
+- block: not object. call by yield.
+- proc: do not check number of arguments, abort execution after .call
+- lambda: {}, ->() {}, a special Proc that check number of arguments, keep execution after .call, support curry
+
 # module
 
 use include to append both class and instance methods
@@ -243,11 +322,25 @@ Block passing by a block parameter (e.g. def foo(&b); bar(&b); end) is about 3 t
 lonely operator &. see: activesupport try!
 ~~~~
 
-# stdlib
+# use case
 
+stdlib
 ~~~~
 Forwardable, Observable, Singleton etc.
 ~~~~
+
+assert
+- raise unless
+
+interface
+- way1: duck typing + tdd
+- way2: module def method raise -> include module
+
+immutable
+- constructor call freeze
+
+singleton
+- include Singleton
 
 # rspec
 
@@ -262,14 +355,6 @@ raise_error, yiled
 # rails
 
 Rails philosophy: DRY, Convention Over Configuration.
-
-link_to
-- 
-
-rotues
-- index
-- new, show, edit
-- create, update, destroy
 
 params
 - ActionController::Parameters.action_on_unpermitted_parameters = :raise
@@ -287,3 +372,100 @@ cache config
 - ActiveSupport::Cache::DalliStore: High performance memcached client for Ruby.
 - cache key: any object is ok.
 - bin/rails dev:cache
+
+# config/routes.rb
+
+action convention
+- index
+- new, show, edit
+- create, update, destroy
+
+resourceful routes
+- resources :atricles
+- get 'profile', to: 'users#show'
+- adding member/collection routes
+
+reuse
+- concern
+- naming: get 'exit', to: 'sessions#destroy', as: :logout
+- wildcard segments: get 'photos/*other', to: 'photos#unknown'
+
+nesting
+- namespace :admin do
+- nested resources: suggest at most 1 level deep. http://weblog.jamisbuck.org/2007/2/5/nesting-resources
+- shallow nesting
+
+non-resourceful routes
+- bound routes: get 'photos(/:id)', to: :display
+- dynamic segments: get 'photos/:id/:user_id', to: 'photos#show'
+- static segments: get 'photos/:id/with_user/:user_id', to: 'photos#show'
+- defaults: get 'photos/:id', to: 'photos#show', defaults: { format: 'jpg' }
+- verb constranints: match 'photos', to: 'photos#show', via: [:post, :delete]
+- segment constranints: get 'photos/:id', to: 'photos#show', id: /[A-Z]\d{5}/
+- request-based constranints: get 'photos', to: 'photos#index', constraints: { subdomain: 'admin' }
+
+etc
+- redirect: get '/stories/:name', to: redirect('/articles/%{name}')
+- root 'pages#main'
+- get 'こんにちは', to: 'welcome#index'
+- direct :homepage do
+- resolve("Basket") { [:basket] }
+
+>rails routes # http://localhost:3000/rails/info/routes
+~~~~
+       Prefix Verb   URI Pattern                  Controller#Action
+     articles GET    /articles(.:format)          articles#index
+              POST   /articles(.:format)          articles#create
+  new_article GET    /articles/new(.:format)      articles#new
+ edit_article GET    /articles/:id/edit(.:format) articles#edit
+      article GET    /articles/:id(.:format)      articles#show
+              PATCH  /articles/:id(.:format)      articles#update
+              PUT    /articles/:id(.:format)      articles#update
+              DELETE /articles/:id(.:format)      articles#destroy
+~~~~
+
+url helpers
+- edit_article_path(:id), edit_article_url(:id)
+- magazine_ad_path(@magazine, @ad), url_for([@magazine, @ad]), [@magazine, @ad], [:edit, @magazine, @ad]
+
+# autoloading
+
+ruby const resolution
+- relative const resolution: nesting -> ancestor -> Object -> const_missing
+- qualified const resolution: relative::qualified.
+- parent namespace
+
+rails
+- autoload_paths: app/*, app/*/concern, test/mailers/previews
+- eager_load_paths: app/*, app/*/concern
+- const resolution: iterate autoload_paths
+- to support lazy, Module#autoload not used
+
+rails dev
+- eager_load=false, cache_classes=false.
+
+rails test
+- eager_load=false
+
+rails release
+- eager_load=true, config.cache_classes=true.
+
+bin/rails r 'puts ActiveSupport::Dependencies.autoload_paths'
+~~~~
+/vagrant/reisen/app/assets
+/vagrant/reisen/app/channels
+/vagrant/reisen/app/controllers
+/vagrant/reisen/app/controllers/concerns
+/vagrant/reisen/app/helpers
+/vagrant/reisen/app/jobs
+/vagrant/reisen/app/mailers
+/vagrant/reisen/app/models
+/vagrant/reisen/app/models/concerns
+/home/vagrant/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activestorage-5.2.0/app/assets
+/home/vagrant/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activestorage-5.2.0/app/controllers
+/home/vagrant/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activestorage-5.2.0/app/controllers/concerns
+/home/vagrant/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activestorage-5.2.0/app/javascript
+/home/vagrant/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activestorage-5.2.0/app/jobs
+/home/vagrant/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activestorage-5.2.0/app/models
+/vagrant/reisen/test/mailers/previews
+~~~~
