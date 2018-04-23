@@ -356,10 +356,6 @@ raise_error, yiled
 
 Rails philosophy: DRY, Convention Over Configuration.
 
-params
-- ActionController::Parameters.action_on_unpermitted_parameters = :raise
-- params.require(:person).permit(:name, :age)
-
 cache
 - page(removed from Rails 4.0): default off. 
 - action(removed from Rails 4.0): config/environments/ config.action_controller.perform_caching = true if production
@@ -551,6 +547,72 @@ naming convertions
 <% end %>
 <input id="person_address_primary_1_city" name="person[address][primary][1][city]" type="text" value="bologna" />
 ~~~~
+
+# controller
+
+params send
+- GET /clients?ids[]=1&ids[]=2&ids[]=3
+- name="client[address][postcode]"
+- Content-Type: application/json. to safely omit root element, set config.wrap_parameters=true or call wrap_parameters in controller.
+
+params access
+- default_url_options
+- controller_name, action_name
+- params.require(:person).permit(:name, :age).permit(id: []) ActionController::Parameters.action_on_unpermitted_parameters = :raise
+- params.require(:log_entry).permit!
+- private def person_params
+
+session
+- Rails.application.config.session_store :cache_store, key: xx, domain: xx
+- session[:current_user_id], session[:current_user_id] = nil, reset_session
+
+cookie
+- cookies[:commenter_name]
+- Rails.application.config.action_dispatch.cookies_serializer = :json
+
+flash
+- values only be available in the next request
+- flash[:notice] = "You have successfully logged out.", redirect_to root_url
+- redirect_to root_url, notice: "You have successfully logged out."
+- redirect_to root_url, flash: { referral_code: 1234 }
+- flash.keep; redirect_to users_url
+- flash.now[:error] = "Could not save client"
+
+filters
+- before_action :require_login
+- skip_before_action :require_login, only: [:new, :create]
+- around_action :wrap_in_transaction, only: :show
+- before_action LoginFilter # def self.before
+
+request object
+- url, protocol, host, port, domain, query_string, method, get? ..., headers
+- remote_ip
+- path_parameters, query_parameters, request_parameters
+
+response object
+- not usually used directly
+- body, status, headers, location, content_type, charset...
+- response.headers["Content-Type"] = "application/pdf"
+
+response
+- render json: @users
+- send_data
+- send_file
+- include ActionController::Live
+
+csrf
+- from helpers, authenticity_token
+
+https
+- force_ssl except: :cheeseburger # config.force_ssl
+
+rescue
+- default: 404.html, 500.html
+- rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
+log filtering
+- filter_parameter_logging.rb: Rails.application.config.filter_parameters += [:password]
+- config.filter_redirect.concat ['s3.amazonaws.com', /private_path/]
 
 # model
 
