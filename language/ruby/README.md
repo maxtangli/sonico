@@ -454,7 +454,6 @@ search form
   <input name="commit" type="submit" value="Search" />
 </form>
 
-
 # handle multiple hashes in form helper calls
 form_tag({controller: "people", action: "search"}, method: "get", class: "nifty_form")
 ~~~~
@@ -546,6 +545,68 @@ naming convertions
   <%= address_form.text_field :city %>
 <% end %>
 <input id="person_address_primary_1_city" name="person[address][primary][1][city]" type="text" value="bologna" />
+~~~~
+
+render
+~~~~
+layout "application" # default
+render controller_name.html.erb # default
+
+render inline: "xml.p {'Horrid coding practice!'}", type: :builder # debug only
+render plain: "OK"
+render html: helpers.tag.strong('Not Found')
+render json: @product
+render js: "alert('Hello Rails');"
+
+head :created, location: photo_path(@photo)
+
+redirect_to photos_url
+redirect_back(fallback_location: root_path)
+~~~~
+
+layout
+~~~~
+auto_discovery_link_tag, javascript_include_tag, stylesheet_link_tag, image_tag, video_tag, audio_tag
+
+_.erb
+<html>
+  <head>
+  <%= yield :head %>
+  </head>
+  <body>
+  <%= yield %>
+  </body>
+</html>
+
+# usecase: load page-specific js files etc.
+.erb
+<%= yield %>
+<% content_for :head do %>
+  <title>A simple page</title>
+<% end %>
+~~~~
+
+partials
+~~~~
+# render _menu.html.erb at
+<%= render "menu" %>
+
+# explicitly specifying :partial is required when passing additional options
+<%= render partial: "link_area", layout: "graybar" %>
+<%= render partial: "form", locals: {zone: @zone} %>
+<%= render partial: "product", collection: @products, as: :item %>
+<%= render partial: @products, spacer_template: "product_ruler" %>
+
+_.erb
+<% if local_assigns[:full] %>...
+.erb
+<%= render article, full: true %>
+
+# collection detect by model name
+_.erb
+<p>Product Name: <%= product.name %></p>
+.erb
+<%= render @products %>
 ~~~~
 
 # controller
