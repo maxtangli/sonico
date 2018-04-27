@@ -344,6 +344,22 @@ singleton
 
 # rspec
 
+core3.7 https://relishapp.com/rspec/rspec-core/v/3-7/docs
+~~~~
+describe, context, it
+shared_examples, include_examples, it_behaves_like, subject
+shared_context, include_context
+
+before, after, :suit, :contexnt, :example
+around
+when_first_matching_example_defined
+
+subject { [1, 2, 3] }, subject(:global_count) { $count += 1 }, it { should be_empty }
+let # help method, lazy_evaluated 
+described_class, .metadata[:foo]
+~~~~
+
+match
 ~~~~
 expect to, not_to, and, or
 eq, be >, be_within(delta).of
