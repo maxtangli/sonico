@@ -345,28 +345,62 @@ singleton
 # rspec
 
 core3.7 https://relishapp.com/rspec/rspec-core/v/3-7/docs
-~~~~
-describe, context, it
-shared_examples, include_examples, it_behaves_like, subject
-shared_context, include_context
 
-before, after, :suit, :contexnt, :example
-around
-when_first_matching_example_defined
+group, example
+- describe, context # group, eagerly evaluated when the spec file is loaded, evaluated in the context of a subclass of xxx<RSpec::Core::ExampleGroup it belongs.
+- it # example, run until all spec files have been loaded, evaluated in the context of an - instance of the example group class it belongs.
 
-subject { [1, 2, 3] }, subject(:global_count) { $count += 1 }, it { should be_empty }
-let # help method, lazy_evaluated 
-described_class, .metadata[:foo]
+shared example
+- shared_examples, include_examples # share including it
+- shared_context, include_context # share not including it
+- described_class, .metadata[:foo] # metadata, useful in shared examples e.g. expect(described_class.new)
+
+hooks
+~~~~
+config.before(:suite) 
+before :context, before :all # before all examples in a group
+before :example, before :each # before each examples in a group
+after  :example
+after  :context
+config.after(:suite)
+
+around # same as before+after, useful to run an example within a block
+
+when_first_matching_example_defined # to delay expensive setup logic
 ~~~~
 
-match
-~~~~
-expect to, not_to, and, or
-eq, be >, be_within(delta).of
-be, be_a, be_true, be_xxx
-match, include, cover
-raise_error, yiled
-~~~~
+subject
+- recommend that you reserve it for support of custom matchers and/or extension libraries that hide its use from examples.
+- implicitly defined subject
+- explicit subject: subject { [1, 2, 3] }, subject(:global_count) { $count += 1 }
+- one line syntax: it { should be_empty }
+
+helper
+- let # lazy_evaluated memoized helper method, cached per example
+- let! # early_evaluated memoized helper method, cached per example
+- def xxx # helper method, exposed to sub groups.
+- configure {|c| c.include Helpers} # module
+
+metadata
+- it "" do |exmaple| expect(example.description).to eq("is the example object")
+- it "" do expect(described_class).to eq(Fixnum)
+- it "" do expect(example.metadata[:foo]).to eq(17) # user-defined metadata
+
+filter
+- inclusion filters
+- exclusion filters
+- conditional Filters
+- filter_run_when_matching
+
+RSpec Expectations 3.7 https://relishapp.com/rspec/rspec-expectations/docs
+
+matchers
+- expect to, to_not, and, or
+- eq, be >, be_within(delta).of, be, be_a, be_true, be_xxx
+- match, include, cover
+- raise_error, yiled
+
+custom matchers
 
 # rails
 
