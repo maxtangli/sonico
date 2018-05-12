@@ -135,16 +135,16 @@
           "lo": {
             "tx": {
               "queuelen": "1",
-              "bytes": "3396",
-              "packets": "40",
+              "bytes": "5177",
+              "packets": "60",
               "errors": "0",
               "drop": "0",
               "carrier": "0",
               "collisions": "0"
             },
             "rx": {
-              "bytes": "3396",
-              "packets": "40",
+              "bytes": "5177",
+              "packets": "60",
               "errors": "0",
               "drop": "0",
               "overrun": "0"
@@ -153,16 +153,16 @@
           "enp0s3": {
             "tx": {
               "queuelen": "1000",
-              "bytes": "3905540",
-              "packets": "61180",
+              "bytes": "4042016",
+              "packets": "62644",
               "errors": "0",
               "drop": "0",
               "carrier": "0",
               "collisions": "0"
             },
             "rx": {
-              "bytes": "229980950",
-              "packets": "165849",
+              "bytes": "230162317",
+              "packets": "168256",
               "errors": "0",
               "drop": "0",
               "overrun": "0"
@@ -322,24 +322,24 @@
         "surplus": "0"
       },
       "total": "4046372kB",
-      "free": "2599780kB",
-      "available": "3620724kB",
-      "buffers": "63640kB",
-      "cached": "1105208kB",
-      "active": "527932kB",
-      "inactive": "744880kB",
-      "dirty": "244kB",
+      "free": "2593692kB",
+      "available": "3618896kB",
+      "buffers": "63940kB",
+      "cached": "1108032kB",
+      "active": "536960kB",
+      "inactive": "739868kB",
+      "dirty": "28kB",
       "writeback": "0kB",
-      "anon_pages": "107540kB",
-      "mapped": "42736kB",
-      "slab": "143428kB",
-      "slab_reclaimable": "127120kB",
-      "slab_unreclaim": "16308kB",
-      "page_tables": "3888kB",
+      "anon_pages": "108408kB",
+      "mapped": "42900kB",
+      "slab": "145668kB",
+      "slab_reclaimable": "129388kB",
+      "slab_unreclaim": "16280kB",
+      "page_tables": "3984kB",
       "nfs_unstable": "0kB",
       "bounce": "0kB",
       "commit_limit": "2023184kB",
-      "committed_as": "832568kB",
+      "committed_as": "831780kB",
       "vmalloc_total": "34359738367kB",
       "vmalloc_used": "0kB",
       "vmalloc_chunk": "0kB",
@@ -787,10 +787,10 @@
         "ohai_root": "/opt/chefdk/embedded/lib/ruby/gems/2.4.0/gems/ohai-13.8.0/lib/ohai"
       }
     },
-    "uptime_seconds": 2081,
-    "uptime": "34 minutes 41 seconds",
-    "idletime_seconds": 3895,
-    "idletime": "1 hours 04 minutes 55 seconds",
+    "uptime_seconds": 5593,
+    "uptime": "1 hours 33 minutes 13 seconds",
+    "idletime_seconds": 10871,
+    "idletime": "3 hours 01 minutes 11 seconds",
     "filesystem": {
       "by_device": {
         "udev": {
@@ -845,12 +845,12 @@
         },
         "/dev/sda1": {
           "kb_size": "10098468",
-          "kb_used": "1750860",
-          "kb_available": "8331224",
+          "kb_used": "1750892",
+          "kb_available": "8331192",
           "percent_used": "18%",
           "total_inodes": "1280000",
-          "inodes_used": "103612",
-          "inodes_available": "1176388",
+          "inodes_used": "103620",
+          "inodes_available": "1176380",
           "inodes_percent_used": "9%",
           "fs_type": "ext4",
           "mount_options": [
@@ -866,8 +866,8 @@
         },
         "vagrant": {
           "kb_size": "382729212",
-          "kb_used": "281107224",
-          "kb_available": "101621988",
+          "kb_used": "281107880",
+          "kb_available": "101621332",
           "percent_used": "74%",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -1106,12 +1106,12 @@
         },
         "/": {
           "kb_size": "10098468",
-          "kb_used": "1750860",
-          "kb_available": "8331224",
+          "kb_used": "1750892",
+          "kb_available": "8331192",
           "percent_used": "18%",
           "total_inodes": "1280000",
-          "inodes_used": "103612",
-          "inodes_available": "1176388",
+          "inodes_used": "103620",
+          "inodes_available": "1176380",
           "inodes_percent_used": "9%",
           "fs_type": "ext4",
           "mount_options": [
@@ -1189,8 +1189,8 @@
         },
         "/vagrant": {
           "kb_size": "382729212",
-          "kb_used": "281107224",
-          "kb_available": "101621988",
+          "kb_used": "281107880",
+          "kb_available": "101621332",
           "percent_used": "74%",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -1574,13 +1574,13 @@
         "/dev/sda1,/": {
           "device": "/dev/sda1",
           "kb_size": "10098468",
-          "kb_used": "1750860",
-          "kb_available": "8331224",
+          "kb_used": "1750892",
+          "kb_available": "8331192",
           "percent_used": "18%",
           "mount": "/",
           "total_inodes": "1280000",
-          "inodes_used": "103612",
-          "inodes_available": "1176388",
+          "inodes_used": "103620",
+          "inodes_available": "1176380",
           "inodes_percent_used": "9%",
           "fs_type": "ext4",
           "mount_options": [
@@ -1653,8 +1653,8 @@
         "vagrant,/vagrant": {
           "device": "vagrant",
           "kb_size": "382729212",
-          "kb_used": "281107224",
-          "kb_available": "101621988",
+          "kb_used": "281107880",
+          "kb_available": "101621332",
           "percent_used": "74%",
           "mount": "/vagrant",
           "total_inodes": "1000",
@@ -2034,12 +2034,12 @@
         },
         "/dev/sda1": {
           "kb_size": "10098468",
-          "kb_used": "1750860",
-          "kb_available": "8331224",
+          "kb_used": "1750892",
+          "kb_available": "8331192",
           "percent_used": "18%",
           "total_inodes": "1280000",
-          "inodes_used": "103612",
-          "inodes_available": "1176388",
+          "inodes_used": "103620",
+          "inodes_available": "1176380",
           "inodes_percent_used": "9%",
           "fs_type": "ext4",
           "mount_options": [
@@ -2055,8 +2055,8 @@
         },
         "vagrant": {
           "kb_size": "382729212",
-          "kb_used": "281107224",
-          "kb_available": "101621988",
+          "kb_used": "281107880",
+          "kb_available": "101621332",
           "percent_used": "74%",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -2295,12 +2295,12 @@
         },
         "/": {
           "kb_size": "10098468",
-          "kb_used": "1750860",
-          "kb_available": "8331224",
+          "kb_used": "1750892",
+          "kb_available": "8331192",
           "percent_used": "18%",
           "total_inodes": "1280000",
-          "inodes_used": "103612",
-          "inodes_available": "1176388",
+          "inodes_used": "103620",
+          "inodes_available": "1176380",
           "inodes_percent_used": "9%",
           "fs_type": "ext4",
           "mount_options": [
@@ -2378,8 +2378,8 @@
         },
         "/vagrant": {
           "kb_size": "382729212",
-          "kb_used": "281107224",
-          "kb_available": "101621988",
+          "kb_used": "281107880",
+          "kb_available": "101621332",
           "percent_used": "74%",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -2763,13 +2763,13 @@
         "/dev/sda1,/": {
           "device": "/dev/sda1",
           "kb_size": "10098468",
-          "kb_used": "1750860",
-          "kb_available": "8331224",
+          "kb_used": "1750892",
+          "kb_available": "8331192",
           "percent_used": "18%",
           "mount": "/",
           "total_inodes": "1280000",
-          "inodes_used": "103612",
-          "inodes_available": "1176388",
+          "inodes_used": "103620",
+          "inodes_available": "1176380",
           "inodes_percent_used": "9%",
           "fs_type": "ext4",
           "mount_options": [
@@ -2842,8 +2842,8 @@
         "vagrant,/vagrant": {
           "device": "vagrant",
           "kb_size": "382729212",
-          "kb_used": "281107224",
-          "kb_available": "101621988",
+          "kb_used": "281107880",
+          "kb_available": "101621332",
           "percent_used": "74%",
           "mount": "/vagrant",
           "total_inodes": "1000",
@@ -3437,7 +3437,7 @@
       }
     },
     "root_group": "root",
-    "ohai_time": 1526047238.3875463,
+    "ohai_time": 1526050751.2835824,
     "time": {
       "timezone": "UTC"
     },
@@ -6054,7 +6054,7 @@
       "ULONG_MAX": 18446744073709551615,
       "USHRT_MAX": 65535,
       "WORD_BIT": 32,
-      "_AVPHYS_PAGES": 649485,
+      "_AVPHYS_PAGES": 647926,
       "_NPROCESSORS_CONF": 2,
       "_NPROCESSORS_ONLN": 2,
       "_PHYS_PAGES": 1011593,
@@ -6313,22 +6313,22 @@
       "_POSIX_RAW_SOCKETS": 200809
     },
     "recipes": [
-      "learn_chef_apache2",
-      "learn_chef_apache2::default"
+      "motd",
+      "motd::default"
     ],
     "expanded_run_list": [
-      "learn_chef_apache2::default"
+      "motd::default"
     ],
     "roles": [
 
     ],
     "cookbooks": {
-      "learn_chef_apache2": {
+      "motd": {
         "version": "0.1.0"
       }
     }
   },
   "run_list": [
-    "recipe[learn_chef_apache2]"
+    "recipe[motd]"
   ]
 }

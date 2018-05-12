@@ -2,6 +2,9 @@
 
 components
 - chef dsl
+- recipe, cookbook, chef-supermarket
+- kitchen, chef-client, chef-server, chef-zero
+- resources: package, service, cookbook-file, template
 
 # tutorial
 
@@ -23,4 +26,21 @@ sudo chef-client --local-mode --runlist 'recipe[learn_chef_apache2]'
 curl localhost
 ~~~~
 
-# learning chef
+# Learning Chef.Mischa Taylor etc.2014.pdf
+
+recipe
+~~~~
+sudo chef-apply webserver.rb
+~~~~
+
+cookbook
+~~~~
+chef generate cookbook motd && cd motd
+kitchen list
+sudo touch /etc/motd
+chef generate file motd
+vim files/default/motd
+
+sudo chef-client --local-mode --runlist 'recipe[motd]'
+cat /etc/motd
+~~~~
