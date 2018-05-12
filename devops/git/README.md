@@ -54,7 +54,7 @@ other features
 
 my config
 ~~~~
-git config --global user.name "tang"
+git config --global user.name tang
 git config --global user.email maxtangli@qq.com
 git config --global core.autocrlf input
 ~~~~
