@@ -15,17 +15,19 @@ deploy
 - node: server, cloud, vm, network device, container etc.
 - chef on nodes: chef client, ohai
 
-use market cookbook
-~~~~
-vim berksfile: cookbook xxx
-berks vendor
-vim recipes/default.rb: chef dsl by xxx
-~~~~
-
 run recipes locally
 ~~~~
 chef generate cookbook cookbooks/tang-dev
 vim ...
+sudo chef-client -z -r 'recipe[tang-dev]'
+~~~~
+
+use market cookbook
+~~~~
+vim metadata.rb: depends xxx
+vim recipes/default.rb: chef dsl by xxx
+berks install
+mv ~/.berksshelf/xxx-ver ./cookbooks/xxx
 sudo chef-client -z -r 'recipe[tang-dev]'
 ~~~~
 

@@ -135,16 +135,16 @@
           "lo": {
             "tx": {
               "queuelen": "1",
-              "bytes": "0",
-              "packets": "0",
+              "bytes": "729285",
+              "packets": "589",
               "errors": "0",
               "drop": "0",
               "carrier": "0",
               "collisions": "0"
             },
             "rx": {
-              "bytes": "0",
-              "packets": "0",
+              "bytes": "729285",
+              "packets": "589",
               "errors": "0",
               "drop": "0",
               "overrun": "0"
@@ -153,16 +153,16 @@
           "enp0s3": {
             "tx": {
               "queuelen": "1000",
-              "bytes": "3546752",
-              "packets": "54519",
+              "bytes": "7522926",
+              "packets": "101671",
               "errors": "0",
               "drop": "0",
               "carrier": "0",
               "collisions": "0"
             },
             "rx": {
-              "bytes": "202613238",
-              "packets": "148094",
+              "bytes": "263030805",
+              "packets": "219759",
               "errors": "0",
               "drop": "0",
               "overrun": "0"
@@ -322,24 +322,24 @@
         "surplus": "0"
       },
       "total": "4046372kB",
-      "free": "2792392kB",
-      "available": "3627932kB",
-      "buffers": "58284kB",
-      "cached": "927228kB",
-      "active": "369968kB",
-      "inactive": "717712kB",
-      "dirty": "76kB",
+      "free": "2243360kB",
+      "available": "3603480kB",
+      "buffers": "115092kB",
+      "cached": "1338940kB",
+      "active": "525776kB",
+      "inactive": "1028392kB",
+      "dirty": "28kB",
       "writeback": "0kB",
-      "anon_pages": "105792kB",
-      "mapped": "41316kB",
-      "slab": "138140kB",
-      "slab_reclaimable": "122452kB",
-      "slab_unreclaim": "15688kB",
-      "page_tables": "3220kB",
+      "anon_pages": "103736kB",
+      "mapped": "41956kB",
+      "slab": "219844kB",
+      "slab_reclaimable": "201752kB",
+      "slab_unreclaim": "18092kB",
+      "page_tables": "3284kB",
       "nfs_unstable": "0kB",
       "bounce": "0kB",
       "commit_limit": "2023184kB",
-      "committed_as": "366816kB",
+      "committed_as": "379928kB",
       "vmalloc_total": "34359738367kB",
       "vmalloc_used": "0kB",
       "vmalloc_chunk": "0kB",
@@ -787,10 +787,10 @@
         "ohai_root": "/opt/chefdk/embedded/lib/ruby/gems/2.4.0/gems/ohai-13.8.0/lib/ohai"
       }
     },
-    "uptime_seconds": 4836,
-    "uptime": "1 hours 20 minutes 36 seconds",
-    "idletime_seconds": 9391,
-    "idletime": "2 hours 36 minutes 31 seconds",
+    "uptime_seconds": 26191,
+    "uptime": "7 hours 16 minutes 31 seconds",
+    "idletime_seconds": 50894,
+    "idletime": "14 hours 08 minutes 14 seconds",
     "filesystem": {
       "by_device": {
         "udev": {
@@ -845,13 +845,13 @@
         },
         "/dev/sda1": {
           "kb_size": "10098468",
-          "kb_used": "1575008",
-          "kb_available": "8507076",
-          "percent_used": "16%",
+          "kb_used": "1996848",
+          "kb_available": "8085236",
+          "percent_used": "20%",
           "total_inodes": "1280000",
-          "inodes_used": "102745",
-          "inodes_available": "1177255",
-          "inodes_percent_used": "9%",
+          "inodes_used": "142797",
+          "inodes_available": "1137203",
+          "inodes_percent_used": "12%",
           "fs_type": "ext4",
           "mount_options": [
             "rw",
@@ -866,8 +866,8 @@
         },
         "vagrant": {
           "kb_size": "382729212",
-          "kb_used": "268237064",
-          "kb_available": "114492148",
+          "kb_used": "268240056",
+          "kb_available": "114489156",
           "percent_used": "71%",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -1106,13 +1106,13 @@
         },
         "/": {
           "kb_size": "10098468",
-          "kb_used": "1575008",
-          "kb_available": "8507076",
-          "percent_used": "16%",
+          "kb_used": "1996848",
+          "kb_available": "8085236",
+          "percent_used": "20%",
           "total_inodes": "1280000",
-          "inodes_used": "102745",
-          "inodes_available": "1177255",
-          "inodes_percent_used": "9%",
+          "inodes_used": "142797",
+          "inodes_available": "1137203",
+          "inodes_percent_used": "12%",
           "fs_type": "ext4",
           "mount_options": [
             "rw",
@@ -1189,8 +1189,8 @@
         },
         "/vagrant": {
           "kb_size": "382729212",
-          "kb_used": "268237064",
-          "kb_available": "114492148",
+          "kb_used": "268240056",
+          "kb_available": "114489156",
           "percent_used": "71%",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -1574,14 +1574,14 @@
         "/dev/sda1,/": {
           "device": "/dev/sda1",
           "kb_size": "10098468",
-          "kb_used": "1575008",
-          "kb_available": "8507076",
-          "percent_used": "16%",
+          "kb_used": "1996848",
+          "kb_available": "8085236",
+          "percent_used": "20%",
           "mount": "/",
           "total_inodes": "1280000",
-          "inodes_used": "102745",
-          "inodes_available": "1177255",
-          "inodes_percent_used": "9%",
+          "inodes_used": "142797",
+          "inodes_available": "1137203",
+          "inodes_percent_used": "12%",
           "fs_type": "ext4",
           "mount_options": [
             "rw",
@@ -1653,8 +1653,8 @@
         "vagrant,/vagrant": {
           "device": "vagrant",
           "kb_size": "382729212",
-          "kb_used": "268237064",
-          "kb_available": "114492148",
+          "kb_used": "268240056",
+          "kb_available": "114489156",
           "percent_used": "71%",
           "mount": "/vagrant",
           "total_inodes": "1000",
@@ -2034,13 +2034,13 @@
         },
         "/dev/sda1": {
           "kb_size": "10098468",
-          "kb_used": "1575008",
-          "kb_available": "8507076",
-          "percent_used": "16%",
+          "kb_used": "1996848",
+          "kb_available": "8085236",
+          "percent_used": "20%",
           "total_inodes": "1280000",
-          "inodes_used": "102745",
-          "inodes_available": "1177255",
-          "inodes_percent_used": "9%",
+          "inodes_used": "142797",
+          "inodes_available": "1137203",
+          "inodes_percent_used": "12%",
           "fs_type": "ext4",
           "mount_options": [
             "rw",
@@ -2055,8 +2055,8 @@
         },
         "vagrant": {
           "kb_size": "382729212",
-          "kb_used": "268237064",
-          "kb_available": "114492148",
+          "kb_used": "268240056",
+          "kb_available": "114489156",
           "percent_used": "71%",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -2295,13 +2295,13 @@
         },
         "/": {
           "kb_size": "10098468",
-          "kb_used": "1575008",
-          "kb_available": "8507076",
-          "percent_used": "16%",
+          "kb_used": "1996848",
+          "kb_available": "8085236",
+          "percent_used": "20%",
           "total_inodes": "1280000",
-          "inodes_used": "102745",
-          "inodes_available": "1177255",
-          "inodes_percent_used": "9%",
+          "inodes_used": "142797",
+          "inodes_available": "1137203",
+          "inodes_percent_used": "12%",
           "fs_type": "ext4",
           "mount_options": [
             "rw",
@@ -2378,8 +2378,8 @@
         },
         "/vagrant": {
           "kb_size": "382729212",
-          "kb_used": "268237064",
-          "kb_available": "114492148",
+          "kb_used": "268240056",
+          "kb_available": "114489156",
           "percent_used": "71%",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -2763,14 +2763,14 @@
         "/dev/sda1,/": {
           "device": "/dev/sda1",
           "kb_size": "10098468",
-          "kb_used": "1575008",
-          "kb_available": "8507076",
-          "percent_used": "16%",
+          "kb_used": "1996848",
+          "kb_available": "8085236",
+          "percent_used": "20%",
           "mount": "/",
           "total_inodes": "1280000",
-          "inodes_used": "102745",
-          "inodes_available": "1177255",
-          "inodes_percent_used": "9%",
+          "inodes_used": "142797",
+          "inodes_available": "1137203",
+          "inodes_percent_used": "12%",
           "fs_type": "ext4",
           "mount_options": [
             "rw",
@@ -2842,8 +2842,8 @@
         "vagrant,/vagrant": {
           "device": "vagrant",
           "kb_size": "382729212",
-          "kb_used": "268237064",
-          "kb_available": "114492148",
+          "kb_used": "268240056",
+          "kb_available": "114489156",
           "percent_used": "71%",
           "mount": "/vagrant",
           "total_inodes": "1000",
@@ -3418,8 +3418,8 @@
     },
     "sessions": {
       "by_session": {
-        "3": {
-          "session": "3",
+        "16": {
+          "session": "16",
           "uid": "1000",
           "user": "vagrant",
           "seat": null
@@ -3428,7 +3428,7 @@
       "by_user": {
         "vagrant": [
           {
-            "session": "3",
+            "session": "16",
             "uid": "1000",
             "user": "vagrant",
             "seat": null
@@ -3437,9 +3437,9 @@
       }
     },
     "root_group": "root",
-    "ohai_time": 1526132943.2322268,
+    "ohai_time": 1526197255.1001804,
     "time": {
-      "timezone": "UTC"
+      "timezone": "JST"
     },
     "etc": {
       "passwd": {
@@ -4079,6 +4079,18 @@
         "version": "3.1.18-2ubuntu1",
         "arch": "amd64"
       },
+      "autoconf": {
+        "version": "2.69-9",
+        "arch": "all"
+      },
+      "automake": {
+        "version": "1:1.15-4ubuntu1",
+        "arch": "all"
+      },
+      "autotools-dev": {
+        "version": "20150820.1",
+        "arch": "all"
+      },
       "base-files": {
         "version": "9.4ubuntu4.6",
         "arch": "amd64"
@@ -4107,6 +4119,10 @@
         "version": "2.26.1-1ubuntu1~16.04.6",
         "arch": "amd64"
       },
+      "bison": {
+        "version": "2:3.0.4.dfsg-1",
+        "arch": "amd64"
+      },
       "bsdmainutils": {
         "version": "9.0.6ubuntu3",
         "arch": "amd64"
@@ -4117,6 +4133,10 @@
       },
       "btrfs-tools": {
         "version": "4.4-1ubuntu1",
+        "arch": "amd64"
+      },
+      "build-essential": {
+        "version": "12.1ubuntu2",
         "arch": "amd64"
       },
       "busybox-initramfs": {
@@ -4275,6 +4295,10 @@
         "version": "1.18.4ubuntu1.4",
         "arch": "amd64"
       },
+      "dpkg-dev": {
+        "version": "1.18.4ubuntu1.4",
+        "arch": "all"
+      },
       "e2fslibs": {
         "version": "1.42.13-1ubuntu1",
         "arch": "amd64"
@@ -4327,6 +4351,14 @@
         "version": "2.9.4-1ubuntu3.1",
         "arch": "amd64"
       },
+      "g++": {
+        "version": "4:5.3.1-1ubuntu1",
+        "arch": "amd64"
+      },
+      "g++-5": {
+        "version": "5.4.0-6ubuntu1~16.04.9",
+        "arch": "amd64"
+      },
       "gawk": {
         "version": "1:4.1.3+dfsg-0.1",
         "arch": "amd64"
@@ -4366,6 +4398,10 @@
       "git": {
         "version": "1:2.7.4-0ubuntu1.3",
         "arch": "amd64"
+      },
+      "git-core": {
+        "version": "1:2.7.4-0ubuntu1.3",
+        "arch": "all"
       },
       "git-man": {
         "version": "1:2.7.4-0ubuntu1.3",
@@ -4535,6 +4571,18 @@
         "version": "2.2.52-3",
         "arch": "amd64"
       },
+      "libalgorithm-diff-perl": {
+        "version": "1.19.03-1",
+        "arch": "all"
+      },
+      "libalgorithm-diff-xs-perl": {
+        "version": "0.04-4build1",
+        "arch": "amd64"
+      },
+      "libalgorithm-merge-perl": {
+        "version": "0.08-3",
+        "arch": "all"
+      },
       "libapparmor-perl": {
         "version": "2.10.95-0ubuntu2.9",
         "arch": "amd64"
@@ -4585,6 +4633,10 @@
       },
       "libbind9-140": {
         "version": "1:9.10.3.dfsg.P4-8ubuntu1.10",
+        "arch": "amd64"
+      },
+      "libbison-dev": {
+        "version": "2:3.0.4.dfsg-1",
         "arch": "amd64"
       },
       "libblkid1": {
@@ -4679,6 +4731,10 @@
         "version": "1:9.10.3.dfsg.P4-8ubuntu1.10",
         "arch": "amd64"
       },
+      "libdpkg-perl": {
+        "version": "1.18.4ubuntu1.4",
+        "arch": "all"
+      },
       "libdrm-common": {
         "version": "2.4.83-1~16.04.1",
         "arch": "all"
@@ -4727,8 +4783,16 @@
         "version": "2.27.1-6ubuntu3.4",
         "arch": "amd64"
       },
+      "libffi-dev": {
+        "version": "3.2.1-4",
+        "arch": "amd64"
+      },
       "libffi6": {
         "version": "3.2.1-4",
+        "arch": "amd64"
+      },
+      "libfile-fcntllock-perl": {
+        "version": "0.22-3",
         "arch": "amd64"
       },
       "libfreetype6": {
@@ -4753,6 +4817,10 @@
       },
       "libgcrypt20": {
         "version": "1.6.5-2ubuntu0.4",
+        "arch": "amd64"
+      },
+      "libgdbm-dev": {
+        "version": "1.8.3-13.1",
         "arch": "amd64"
       },
       "libgdbm3": {
@@ -4967,6 +5035,10 @@
         "version": "6.0+20160213-1ubuntu1",
         "arch": "amd64"
       },
+      "libncurses5-dev": {
+        "version": "6.0+20160213-1ubuntu1",
+        "arch": "amd64"
+      },
       "libncursesw5": {
         "version": "6.0+20160213-1ubuntu1",
         "arch": "amd64"
@@ -5099,6 +5171,10 @@
         "version": "6.3-8ubuntu2",
         "arch": "amd64"
       },
+      "libreadline6-dev": {
+        "version": "6.3-8ubuntu2",
+        "arch": "amd64"
+      },
       "libroken18-heimdal": {
         "version": "1.7~git20150920+dfsg-4ubuntu1.16.04.1",
         "arch": "amd64"
@@ -5159,8 +5235,20 @@
         "version": "1.42.13-1ubuntu1",
         "arch": "amd64"
       },
+      "libssl-dev": {
+        "version": "1.0.2g-1ubuntu4.12",
+        "arch": "amd64"
+      },
+      "libssl-doc": {
+        "version": "1.0.2g-1ubuntu4.12",
+        "arch": "all"
+      },
       "libssl1.0.0": {
         "version": "1.0.2g-1ubuntu4.12",
+        "arch": "amd64"
+      },
+      "libstdc++-5-dev": {
+        "version": "5.4.0-6ubuntu1~16.04.9",
         "arch": "amd64"
       },
       "libstdc++6": {
@@ -5186,6 +5274,10 @@
       "libtext-wrapi18n-perl": {
         "version": "0.06-7.1",
         "arch": "all"
+      },
+      "libtinfo-dev": {
+        "version": "6.0+20160213-1ubuntu1",
+        "arch": "amd64"
       },
       "libtinfo5": {
         "version": "6.0+20160213-1ubuntu1",
@@ -5268,6 +5360,10 @@
         "arch": "amd64"
       },
       "libyaml-0-2": {
+        "version": "0.1.6-3",
+        "arch": "amd64"
+      },
+      "libyaml-dev": {
         "version": "0.1.6-3",
         "arch": "amd64"
       },
@@ -5357,6 +5453,10 @@
       },
       "lxd-client": {
         "version": "2.0.11-0ubuntu1~16.04.4",
+        "arch": "amd64"
+      },
+      "m4": {
+        "version": "1.4.17-5",
         "arch": "amd64"
       },
       "make": {
@@ -5938,6 +6038,10 @@
       "zlib1g": {
         "version": "1:1.2.8.dfsg-2ubuntu4.1",
         "arch": "amd64"
+      },
+      "zlib1g-dev": {
+        "version": "1:1.2.8.dfsg-2ubuntu4.1",
+        "arch": "amd64"
       }
     },
     "sysconf": {
@@ -6004,7 +6108,7 @@
       "ULONG_MAX": 18446744073709551615,
       "USHRT_MAX": 65535,
       "WORD_BIT": 32,
-      "_AVPHYS_PAGES": 697308,
+      "_AVPHYS_PAGES": 559965,
       "_NPROCESSORS_CONF": 2,
       "_NPROCESSORS_ONLN": 2,
       "_PHYS_PAGES": 1011593,
@@ -6263,13 +6367,25 @@
       "_POSIX_RAW_SOCKETS": 200809
     },
     "recipes": [
-
+      "tang-dev",
+      "tang-dev::default"
     ],
     "expanded_run_list": [
-
+      "tang-dev::default"
     ],
     "roles": [
 
-    ]
-  }
+    ],
+    "cookbooks": {
+      "tang-dev": {
+        "version": "0.1.0"
+      },
+      "ruby_rbenv": {
+        "version": "2.0.7"
+      }
+    }
+  },
+  "run_list": [
+    "recipe[tang-dev]"
+  ]
 }

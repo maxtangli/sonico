@@ -1,6 +1,6 @@
 name 'tang-dev'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
+maintainer 'tang'
+maintainer_email 'maxtangli@qq.com'
 license 'All Rights Reserved'
 description 'Installs/Configures tang-dev'
 long_description 'Installs/Configures tang-dev'
@@ -18,3 +18,5 @@ chef_version '>= 12.14' if respond_to?(:chef_version)
 # a Supermarket.
 #
 # source_url 'https://github.com/<insert_org_here>/tang-dev'
+
+depends 'ruby_rbenv', '~> 2.0.7'
