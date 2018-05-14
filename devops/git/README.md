@@ -23,7 +23,8 @@ states
 
 branch
 - branch -v
-- checkout -b
+- checkout -b <local_branch> <remote>/<remote_branch>
+- branch -d <local_branch>
 - merge
 - rebase: support commits apply cleanly to remote, e.g. open-source contribution, composite commits into one before push. WARNING: do NOT rebase commits that exist outside your repository.
 
@@ -90,10 +91,22 @@ git checkout master
 git merge my-branch
 ~~~~
 
-undo add
+staging -> not staging
 ~~~~
 git rm --cached <file>
 git reset
+~~~~
+
+REMOVE! not staging changes
+~~~~
+git checkout <file>
+git checkout -- .
+~~~~
+
+REMOVE! untracked files
+~~~~
+git clean -n
+git clean -f
 ~~~~
 
 undo commit or merge
