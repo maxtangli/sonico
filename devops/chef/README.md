@@ -35,7 +35,14 @@ test with docker
 ~~~~
 # docker installed
 chef gem install kitchen-docker
-kitchen converge 
+kitchen converge
+~~~~
+
+vagrant up first time
+~~~~
+curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chefdk -c stable -v 2.5.3
+cd /vagrant/sonico/devops/chef/chef-repo
+sudo chef-client -z -r 'recipe[tang-dev]'
 ~~~~
 
 # install

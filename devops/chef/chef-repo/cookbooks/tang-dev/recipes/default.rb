@@ -26,3 +26,10 @@ end
 
 # ruby
 gem_package 'bundler'
+
+# rails required sqlite3
+package 'libsqlite3-dev'
+package 'sqlite3'
+
+# rails required nodejs
+package 'nodejs'
